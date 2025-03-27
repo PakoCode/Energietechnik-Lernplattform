@@ -271,6 +271,7 @@ main {
     <button onclick="document.getElementById('section4').scrollIntoView()">Dreiphasenwechselspannung</button>
     <button onclick="document.getElementById('section5').scrollIntoView()">RCD</button>
     <button onclick="document.getElementById('ueberstrom-schutzeinrichtungen').scrollIntoView()">Überstrom-Schutzeinrichtungen</button>
+	<button onclick="document.getElementById('spannungsfall').scrollIntoView()">spannungsfall</button>
   </div>
 <main>
     <header>
@@ -1126,6 +1127,53 @@ function berechneNennstrom() {
 document.addEventListener('DOMContentLoaded', berechneNennstrom);
 </script>
 </section>
+<section id="spannungsfall">
+  <h2>Spannungsfall in elektrischen Anlagen</h2>
+  <p>
+    Der Spannungsfall beschreibt den Spannungsabfall entlang eines elektrischen Leiters aufgrund des Leiterwiderstands. Ein zu hoher Spannungsfall kann die Funktion von Geräten beeinträchtigen und zu ineffizientem Betrieb führen.
+  </p>
+  
+  <h3>Grundlagen</h3>
+  <ul>
+    <li><strong>Definition:</strong> Differenz zwischen der eingespeisten Spannung und der Spannung am Verbraucher.</li>
+    <li><strong>Ursachen:</strong> Leitungswiderstand und Stromfluss führen zu einem Spannungsabfall entlang des Leiters.</li>
+  </ul>
+  
+  <h3>Formel zur Berechnung</h3>
+  <p>Die allgemeine Formel lautet:</p>
+  <p style="text-align: center; font-size: 1.2em;">\( \Delta U = \frac{2 \cdot L \cdot I \cdot \rho}{A} \)</p>
+  <ul>
+    <li><strong>L:</strong> Länge des Leiters in Metern (m)</li>
+    <li><strong>I:</strong> Stromstärke in Ampere (A)</li>
+    <li><strong>\(\rho\):</strong> spezifischer Widerstand des Leitermaterials in Ω·mm²/m (z. B. ca. 0,0178 Ω·mm²/m für Kupfer)</li>
+    <li><strong>A:</strong> Querschnitt des Leiters in mm²</li>
+  </ul>
+  
+  <h3>Beispielrechnung</h3>
+  <p>Angenommen, folgende Werte liegen vor:</p>
+  <ul>
+    <li>L = 30 m</li>
+    <li>I = 32 A</li>
+    <li>A = 16 mm²</li>
+    <li>Für Kupfer: \( \rho \approx 0,0178 \, \Omega\cdot mm^2/m \)</li>
+  </ul>
+  <p>Dann berechnet sich der Spannungsfall wie folgt:</p>
+  <p style="text-align: center; font-size: 1.2em;">\( \Delta U = \frac{2 \cdot 30 \cdot 32 \cdot 0,0178}{16} \approx 0,21\,V \)</p>
+  
+  <h3>Normative Vorgaben</h3>
+  <ul>
+    <li>Nach DIN VDE 0100-520 darf der Spannungsfall in Hauptstromkreisen in der Regel nicht mehr als 3 % betragen.</li>
+    <li>Für eine Netzspannung von 400 V entspricht dies einem maximal zulässigen Spannungsabfall von etwa 12 V.</li>
+  </ul>
+  
+  <h3>Wichtige Hinweise</h3>
+  <ul>
+    <li>Ein zu hoher Spannungsfall kann zu einem Leistungsverlust und Funktionsstörungen von Geräten führen.</li>
+    <li>Die korrekte Berechnung des Spannungsfalls ist entscheidend für die Dimensionierung von Leitungen in elektrischen Anlagen.</li>
+    <li>Bei der Planung sollte stets ein Sicherheitsfaktor berücksichtigt werden.</li>
+  </ul>
+</section>
+
 </main>
 </body>
 </html>
