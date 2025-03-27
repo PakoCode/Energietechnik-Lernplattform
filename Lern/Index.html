@@ -277,6 +277,11 @@ main {
       alert("Für die beste Darstellung empfehlen wir, Ihr Gerät in den Querformat zu drehen.");
     }
   }
+
+  // Beim Laden, bei Resize und bei Orientierungswechsel prüfen
+  window.addEventListener("load", checkOrientationAlert);
+  window.addEventListener("resize", checkOrientationAlert);
+  window.addEventListener("orientationchange", checkOrientationAlert);
 </script>
 	  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
