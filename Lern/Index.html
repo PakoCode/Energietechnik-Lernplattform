@@ -253,8 +253,23 @@ main {
     padding: 0 10px;      /* Kleiner Seitenabstand */
   }
 }
-</style>
+/* Standard: Für schmalere Bildschirme (z.B. Smartphones im Hochformat) */
+@media (max-width: 600px) {
+  /* Mobile Layout-Anpassungen */
+}
 
+/* Für Querformat (falls der Bildschirm breiter wird) */
+@media (orientation: landscape) and (max-width: 800px) {
+  /* Anpassungen speziell für Querformat auf kleineren Geräten */
+}
+</style>
+<script>
+	  if (screen.orientation && screen.orientation.lock) {
+  screen.orientation.lock('portrait').catch(function(error) {
+    console.error('Orientation lock failed: ', error);
+  });
+}
+</script>
 	  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	  <script src="https://d3js.org/d3.v6.min.js"></script>
