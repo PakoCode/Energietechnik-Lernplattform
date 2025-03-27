@@ -262,6 +262,7 @@ main {
 @media (orientation: landscape) and (max-width: 800px) {
   /* Anpassungen speziell für Querformat auf kleineren Geräten */
 }
+
 </style>
 <script>
 	  if (screen.orientation && screen.orientation.lock) {
@@ -270,6 +271,14 @@ main {
   });
 }
 </script>
+	  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	  <script src="https://d3js.org/d3.v6.min.js"></script>
+	  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeigerdiagramm</title>
+</head>
+<body>
 <script>
   function checkOrientationAlert() {
     // Wenn die Fensterbreite kleiner ist als die Höhe → Portraitmodus
@@ -283,14 +292,6 @@ main {
   window.addEventListener("resize", checkOrientationAlert);
   window.addEventListener("orientationchange", checkOrientationAlert);
 </script>
-	  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-	  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-	  <script src="https://d3js.org/d3.v6.min.js"></script>
-	  <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zeigerdiagramm</title>
-</head>
-<body>
   <div class="side-navigation">
     <!-- Navigationseinträge -->
     <button onclick="document.getElementById('section1').scrollIntoView()">Übergabepunkten</button>
