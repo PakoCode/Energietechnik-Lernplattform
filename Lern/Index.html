@@ -265,13 +265,13 @@ main {
 <body>
   <div class="side-navigation">
     <!-- Navigationseinträge -->
-    <button onclick="document.getElementById('section1').scrollIntoView()">Definition</button>
+    <button onclick="document.getElementById('section1').scrollIntoView()">Übergabepunkten</button>
     <button onclick="document.getElementById('section2').scrollIntoView()">Netzformen</button>
     <button onclick="document.getElementById('section3').scrollIntoView()">Energieversorgung</button>
     <button onclick="document.getElementById('section4').scrollIntoView()">Dreiphasenwechselspannung</button>
     <button onclick="document.getElementById('section5').scrollIntoView()">RCD</button>
     <button onclick="document.getElementById('ueberstrom-schutzeinrichtungen').scrollIntoView()">Überstrom-Schutzeinrichtungen</button>
-	<button onclick="document.getElementById('spannungsfall').scrollIntoView()">spannungsfall</button>
+	<button onclick="document.getElementById('spannungsfall').scrollIntoView()">Spannungsfall</button>
   </div>
 <main>
     <header>
@@ -530,6 +530,70 @@ main {
         </li>
     </ul>
     </section>
+	<section id="gesamtStrombedarf">
+  <h2>Berechnung des Gesamtstrombedarfs</h2>
+  <p>
+    Zur Ermittlung des Gesamtstrombedarfs eines elektrischen Systems ist es wichtig, die unterschiedlichen Leistungsgrößen zu berücksichtigen:
+  </p>
+  <ul>
+    <li><strong>Wirkleistung (P):</strong> Dies ist die tatsächlich in einem Verbraucher genutzte Leistung in Watt (W).</li>
+    <li><strong>Scheinleistung (S):</strong> Diese gibt die Gesamtleistung in Voltampere (VA) an und setzt sich aus Spannung und Strom zusammen. Für einen Verbraucher gilt: 
+      <br>
+      \( S = \frac{P}{\cos\varphi} \), wobei \( \cos\varphi \) der Leistungsfaktor ist.
+    </li>
+    <li><strong>Blindleistung (Q):</strong> Diese entsteht aufgrund der Phasenverschiebung zwischen Strom und Spannung und kann berechnet werden mit: 
+      <br>
+      \( Q = S \cdot \sin\varphi \) oder alternativ \( Q = \sqrt{S^2 - P^2} \).
+    </li>
+  </ul>
+  <p>
+    Bei parallel geschalteten Verbrauchern addieren sich die Wirkleistungen direkt, während sich die Scheinleistungen – sofern man vereinfachend von reinen Ohmschen Lasten ausgeht – als Summe der einzelnen Scheinleistungen berechnen lassen. Daraus folgt:
+    <br>
+    \( I_{gesamt} = \frac{\sum S_i}{U} \)
+  </p>
+  
+  <h3>Beispielaufgabe</h3>
+  <p>
+    Angenommen, in einem Haushalt werden drei Lampen parallel betrieben:
+  </p>
+  <ul>
+    <li><strong>Lamp A:</strong> 60 W LED-Lampe, \( \cos\varphi = 0.9 \)</li>
+    <li><strong>Lamp B:</strong> 40 W Halogenlampe, \( \cos\varphi = 0.7 \)</li>
+    <li><strong>Lamp C:</strong> 100 W Leuchtstofflampe, \( \cos\varphi = 0.85 \)</li>
+  </ul>
+  <p>
+    Die Netzspannung beträgt 230 V. Zur Berechnung des Gesamtstrombedarfs gehen wir wie folgt vor:
+  </p>
+  <ol>
+    <li>
+      <em>Berechnung der Scheinleistung für jede Lampe:</em>
+      <ul>
+        <li>Lamp A: 
+          \( S_A = \frac{60\,W}{0.9} \approx 66.67\,VA \)
+        </li>
+        <li>Lamp B: 
+          \( S_B = \frac{40\,W}{0.7} \approx 57.14\,VA \)
+        </li>
+        <li>Lamp C: 
+          \( S_C = \frac{100\,W}{0.85} \approx 117.65\,VA \)
+        </li>
+      </ul>
+    </li>
+    <li>
+      <em>Gesamtscheinleistung:</em>
+      <br>
+      \( S_{gesamt} = S_A + S_B + S_C \approx 66.67 + 57.14 + 117.65 \approx 241.46\,VA \)
+    </li>
+    <li>
+      <em>Berechnung des Gesamtstroms:</em>
+      <br>
+      \( I_{gesamt} = \frac{S_{gesamt}}{U} = \frac{241.46\,VA}{230\,V} \approx 1.05\,A \)
+    </li>
+  </ol>
+  <p>
+    In diesem Beispiel beträgt der Gesamtstrombedarf etwa 1,05 A. Dieser Ansatz vereinfacht die Berechnung, indem er die Vektoraddition der Scheinleistungen vernachlässigt – was für rein ohmsche Lasten und konstante Leistungsfaktoren oft ausreichend ist.
+  </p>
+</section>
     <section id="section4">
         <h2>4. Dreiphasenwechselspannung</h2>
         <p>
@@ -1158,7 +1222,7 @@ document.addEventListener('DOMContentLoaded', berechneNennstrom);
     <li>Für Kupfer: \( \rho \approx 0,0178 \, \Omega\cdot mm^2/m \)</li>
   </ul>
   <p>Dann berechnet sich der Spannungsfall wie folgt:</p>
-  <p style="text-align: center; font-size: 1.2em;">\( \Delta U = \frac{2 \cdot 30 \cdot 32 \cdot 0,0178}{16} \approx 0,21\,V \)</p>
+  <p style="text-align: center; font-size: 1.2em;">\( \Delta U = \frac{2 \cdot 30 \cdot 32 \cdot 0,0178}{16} \approx 2.136\,V \)</p>
   
   <h3>Normative Vorgaben</h3>
   <ul>
@@ -1173,7 +1237,96 @@ document.addEventListener('DOMContentLoaded', berechneNennstrom);
     <li>Bei der Planung sollte stets ein Sicherheitsfaktor berücksichtigt werden.</li>
   </ul>
 </section>
+<section id="spannungsfallCalculator">
+  <h2>Spannungsfall Calculator</h2>
+  <p>Berechne den Spannungsfall entlang eines Leiters. Gib die folgenden Werte ein:</p>
+  <form id="spannungsfallForm">
+    <label for="length">Leiterlänge (L in m): </label>
+    <input type="number" id="length" name="length" step="any" required>
+    <br>
+    <label for="current">Strom (I in A): </label>
+    <input type="number" id="current" name="current" step="any" required>
+    <br>
+    <label for="rho">spezifischer Widerstand (ρ in Ω·mm²/m): </label>
+    <input type="number" id="rho" name="rho" step="any" required value="0.0178">
+    <br>
+    <label for="area">Querschnitt (A in mm²): </label>
+    <input type="number" id="area" name="area" step="any" required>
+    <br>
+    <button type="button" id="calculateButton">Berechnen</button>
+  </form>
+  <p id="result">Der Spannungsfall beträgt: -- V</p>
+</section>
 
+<script>
+  document.getElementById('calculateButton').addEventListener('click', function() {
+    // Werte aus den Inputfeldern auslesen und in Zahlen umwandeln
+    const L = parseFloat(document.getElementById('length').value);
+    const I = parseFloat(document.getElementById('current').value);
+    const rho = parseFloat(document.getElementById('rho').value);
+    const A = parseFloat(document.getElementById('area').value);
+
+    // Überprüfen, ob alle Werte gültig sind und der Querschnitt nicht 0 ist
+    if (isNaN(L) || isNaN(I) || isNaN(rho) || isNaN(A) || A === 0) {
+      alert("Bitte alle Felder korrekt ausfüllen!");
+      return;
+    }
+    
+    // Berechnung: ΔU = (2 * L * I * ρ) / A
+    const voltageDrop = (2 * L * I * rho) / A;
+    
+    // Ergebnis anzeigen (auf 3 Nachkommastellen gerundet)
+    document.getElementById('result').innerHTML = `Der Spannungsfall beträgt: ${voltageDrop.toFixed(3)} V`;
+  });
+</script>
+<section id="spannungsfall-dreiphasen">
+  <h2>Spannungsfall in Dreiphasen-Wechselstromsystemen &amp; Wirkungsgrad</h2>
+  
+  <h3>Spannungsfall in Dreiphasen-Systemen</h3>
+  <p>
+    In Dreiphasen-Wechselstromsystemen wird der Spannungsfall entlang der Leitungen durch den Leiterwiderstand und den Strom in jeder Phase verursacht. Aufgrund der symmetrischen Anordnung der Phasen ergibt sich eine modifizierte Berechnungsformel.
+  </p>
+  <p>
+    Für ein ideal symmetrisches System gilt beispielsweise:
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    \( \Delta U_{LL} = \sqrt{3} \cdot \frac{L \cdot I \cdot \rho}{A} \)
+  </p>
+  <ul>
+    <li><strong>L:</strong> Leitungslänge in Metern (m)</li>
+    <li><strong>I:</strong> Strom in Ampere (A) pro Phase</li>
+    <li><strong>\(\rho\):</strong> spezifischer Widerstand des Leitermaterials (z. B. ca. 0,0178 Ω·mm²/m für Kupfer)</li>
+    <li><strong>A:</strong> Leiterquerschnitt in mm²</li>
+  </ul>
+  <p>
+    <em>Beispiel:</em> Bei L = 30 m, I = 32 A, ρ = 0,0178 Ω·mm²/m und A = 16 mm²:
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    \( \Delta U_{LL} = \sqrt{3} \cdot \frac{30 \cdot 32 \cdot 0.0178}{16} \approx 2.14\,V \)
+  </p>
+  
+  <h3>Wirkungsgrad</h3>
+  <p>
+    Der Wirkungsgrad \( \eta \) beschreibt das Verhältnis der vom Verbraucher genutzten (nützlichen) Leistung zur zugeführten elektrischen Gesamtleistung. Verluste, etwa durch Spannungsabfälle in den Leitungen, verringern den Wirkungsgrad.
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    \( \eta = \frac{P_{nutz}}{P_{zugeführt}} \times 100\% \)
+  </p>
+  <ul>
+    <li><strong>P<sub>nutz</sub>:</strong> Nutzbare Leistung, die den Verbrauchern zur Verfügung steht</li>
+    <li><strong>P<sub>zugeführt</sub>:</strong> Gesamt zugeführte Leistung</li>
+  </ul>
+  <p>
+    Ein hoher Spannungsfall führt zu zusätzlichen Verlusten, wodurch der Wirkungsgrad sinkt. Daher ist es wichtig, die Leitungsdimensionierung so zu wählen, dass der Spannungsfall innerhalb zulässiger Grenzen bleibt, um eine möglichst hohe Effizienz zu gewährleisten.
+  </p>
+  
+  <h3>Praktische Hinweise</h3>
+  <ul>
+    <li>Berechne den Spannungsfall für jeden Abschnitt der Anlage, um sicherzustellen, dass dieser innerhalb der normativen Grenzen liegt.</li>
+    <li>Berücksichtige bei der Planung auch mögliche Ungleichlasten oder Phasenverschiebungen, die den Spannungsfall beeinflussen können.</li>
+    <li>Ein optimal dimensionierter Leiter trägt dazu bei, dass der Wirkungsgrad der gesamten Anlage möglichst hoch bleibt.</li>
+  </ul>
+</section>
 </main>
 </body>
 </html>
