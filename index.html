@@ -416,6 +416,51 @@ main {
     Die regelmäßige Durchführung dieser Messungen ist entscheidend, um die Sicherheit und Zuverlässigkeit elektrischer Anlagen zu gewährleisten und alle geltenden Normen einzuhalten.
   </p>
 </section>
+<section id="interaktiveMessungen">
+  <h2>Interaktive Messpunkte</h2>
+  <p>Klicke auf einen Messpunkt, um Details zu sehen.</p>
+  <div id="messDiagramm"></div>
+  <div id="messInfo" class="info-box" style="display:none; position:absolute; background:#fff; padding:10px; border:1px solid #ccc; border-radius:5px;"></div>
+</section>
+
+<script>
+  // Beispiel-Daten für Messpunkte
+  const messDaten = [
+    { id: "spannungsmessung", x: 100, y: 100, info: "Spannungsmessung: Überprüft die Betriebsspannung an den Übergabepunkten." },
+    { id: "isolationsmessung", x: 200, y: 150, info: "Isolationswiderstand: Messung zur Sicherstellung der elektrischen Isolation." },
+    { id: "fehlerstrommessung", x: 300, y: 100, info: "Fehlerstrommessung: Überwacht den Fehlerstrom, um einen FI-Schutzschalter zu testen." }
+  ];
+
+  const svgMess = d3.select("#messDiagramm")
+                    .append("svg")
+                    .attr("width", 400)
+                    .attr("height", 300)
+                    .style("border", "1px solid #ccc");
+
+  // Zeichne Kreise als Messpunkte
+  svgMess.selectAll("circle")
+    .data(messDaten)
+    .enter()
+    .append("circle")
+    .attr("cx", d => d.x)
+    .attr("cy", d => d.y)
+    .attr("r", 20)
+    .attr("fill", "#007BFF")
+    .on("click", (event, d) => {
+      d3.select("#messInfo")
+        .html(`<strong>${d.id}</strong><br>${d.info}`)
+        .style("left", `${event.pageX + 10}px`)
+        .style("top", `${event.pageY + 10}px`)
+        .style("display", "block");
+    });
+
+  // Info-Box beim Klick wieder ausblenden, wenn außerhalb geklickt wird
+  d3.select("body").on("click", function(event) {
+    if (event.target.tagName !== "circle") {
+      d3.select("#messInfo").style("display", "none");
+    }
+  });
+</script>
 <section id="unterverteilung">
   <h2>Unterverteilung</h2>
   <p>
