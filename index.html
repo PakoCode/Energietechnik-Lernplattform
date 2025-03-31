@@ -54,17 +54,18 @@
         padding-bottom: 5px;
     }
     .side-navigation {
-        position: fixed; 
-        top: 10px; 
-        left: 10px; 
-        width: 200px; 
-        padding: 10px; 
-        background: #1e1e1e; /* Dunkle Seitenleiste */
-        border: 1px solid #333; /* Dunkler Rahmen */
-        border-radius: 5px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* Dunklere Schatten */
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 200px;
+  max-height: 90vh;  /* Maximale Höhe auf 90% der Viewport-Höhe */
+  overflow-y: auto;  /* Aktiviert vertikales Scrollen innerhalb der Sidebar */
+  padding: 10px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     }
-
     .side-navigation button {
         display: block; 
         margin: 5px 0; 
