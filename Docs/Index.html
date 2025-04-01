@@ -533,4 +533,1141 @@ main {
     <ul>
         <li>Im öffentlichen Netz häufig verwendet. Neutralleiter (N) und Schutzleiter (PE) sind in der Zuleitung kombiniert (PEN-Leiter).</li>
         <li>Übergabepunkt trennt PEN in N und PE, um im nachfolgenden TN-S-System potenzialfreie Erdung und Schutz zu gewährleisten.</li>
-        <li><strong>Berechnung des PEN-Querschn
+        <li><strong>Berechnung des PEN-Querschnitts:</strong> A<sub>PEN</sub> ≥ 16 mm² Cu (nach DIN VDE 0100-540).</li>
+        <li>Anmerkung: Ab Übergabepunkt ist ein separater PE notwendig, der über einen definierten Potentialausgleich (z. B. Erder, PA-Schiene) sichergestellt wird.</li>
+    </ul>
+    <h3>TT-System:</h3>
+    <ul>
+        <li>Erfordert eine lokale Erdung.</li>
+        <li>Übergabepunkt muss mit einem FI-Schutz (RCD) ausgestattet sein, da Schutzmaßnahmen ausschließlich durch die Erdung und Fehlerstromschutzgeräte erfolgen.</li>
+        <li>Typische Auslösewerte für RCD:
+            <ul>
+                <li>≤ 30 mA: Personenschutz.</li>
+                <li>≤ 300 mA: Brandschutz bei festgelegten Anlagen.</li>
+            </ul>
+        </li>
+    </ul>
+    <h3>IT-System:</h3>
+    <ul>
+        <li>Selten in Veranstaltungstechnik, da aufwändige Isolationsüberwachung notwendig.</li>
+        <li>Übergabepunkt enthält Isolationsüberwachungsgeräte (IMD), die Isolationsfehler erfassen und melden.</li>
+        <li><strong>Berechnung des Isolationswiderstands:</strong> R<sub>iso</sub> ≥ U<sub>n</sub> / I<sub>iso</sub> (nach IEC 61557-8).</li>
+    </ul>
+	<section id="netzformen-tabelle">
+    <h3>Vergleich der Netzformen</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Netzform</th>
+                <th>Charakteristik</th>
+                <th>Typische Anwendungen</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>TN-C</td>
+                <td>Kombinierter Neutral- und Schutzleiter (PEN)</td>
+                <td>Öffentliches Stromnetz</td>
+            </tr>
+            <tr>
+                <td>TN-S</td>
+                <td>Separater Neutralleiter (N) und Schutzleiter (PE)</td>
+                <td>Gebäudeverkabelung, höhere Sicherheit</td>
+            </tr>
+            <tr>
+                <td>TN-C-S</td>
+                <td>Kombiniert in der Zuleitung, getrennt im Anschlussbereich</td>
+                <td>Veranstaltungstechnik, moderne Installationen</td>
+            </tr>
+            <tr>
+                <td>TT</td>
+                <td>Getrennte Erdung am Verbraucher</td>
+                <td>Ruraler Bereich, zusätzliche Fehlerstromschutzschalter (FI)</td>
+            </tr>
+            <tr>
+                <td>IT</td>
+                <td>Ungeerdete Versorgung mit Fehlerüberwachung</td>
+                <td>Selten, spezialisierten Anwendungen</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h2>3. Leistungen und Bemessung am Übergabepunkt</h2>
+    <h3>Leistungsbedarf:</h3>
+    <p>Der Übergabepunkt muss für die maximale Summenleistung aller Verbraucher ausgelegt sein. Hierbei gilt:</p>
+    <h4>Einphasige Last:</h4>
+    <ul>
+        <li>P = U × I × cos φ</li>
+        <li>P: Wirkleistung (W)</li>
+        <li>U: Spannung (V, typischerweise 230 V)</li>
+        <li>I: Strom (A)</li>
+        <li>cos φ: Leistungsfaktor (z. B. 0,8 bis 1,0 für viele Geräte)</li>
+    </ul>
+    <h4>Dreiphasige Last:</h4>
+    <ul>
+        <li>P = √3 × U × I × cos φ</li>
+        <li>U: Spannung zwischen den Außenleitern (400 V in Europa).</li>
+    </ul>
+    <h3>Dimensionierung der Absicherung:</h3>
+    <p>Absicherung wird entsprechend der Anschlussleistung dimensioniert. Beispiel:</p>
+    <ul>
+        <li>Bei einer Gesamtleistung von 22 kW (Drehstrom, cos φ = 0,95) ergibt sich:</li>
+        <li>I = P / (√3 × U × cos φ) = 22000 / (√3 × 400 × 0,95) ≈ 33,5 A</li>
+        <li>Es wäre ein Leitungsschutzschalter mit Nennstrom 35 A oder 40 A zu wählen.</li>
+    </ul>
+    <h3>Spannungsfallberechnung:</h3>
+    <p>Ein zu hoher Spannungsfall zwischen Übergabepunkt und Verbrauchern kann zu Funktionseinschränkungen führen. Nach DIN VDE 0100-520 gilt:</p>
+    <ul>
+        <li>ΔU ≤ 3 % für Hauptstromkreise (0,03 × 400 V = 12 V)</li>
+    </ul>
+    <p><strong>Berechnung des Spannungsfalls:</strong></p>
+    <ul>
+        <li>ΔU = (2 × L × I × ρ) / A</li>
+        <li>L: Leitungslänge in m.</li>
+        <li>I: Strom in A.</li>
+        <li>ρ: spezifischer Widerstand (Cu: ca. 0,0178 Ω·mm²/m).</li>
+        <li>A: Querschnitt in mm².</li>
+    </ul>
+    <p>Beispiel: Bei 30 m Länge, 32 A Strom und 16 mm² Kupferleitung:</p>
+    <ul>
+        <li>ΔU = (2 × 30 × 32 × 0,0178) / 16 ≈ 2,1 V</li>
+    </ul>
+    <p>Der Spannungsfall ist in diesem Beispiel vernachlässigbar klein und erfüllt die Norm.</p>
+    </section>
+    <section id="section3">
+        <h2>1. Grundlagen der Energieversorgung</h2>
+    <h3>a) Energiequellen</h3>
+    <ul>
+        <li>Netzstrom
+            <ul>
+                <li>Betriebsspannung: 230 V (einphasig) / 400 V (dreiphasig)</li>
+                <li>Frequenz: 50 Hz (Standard in Europa)</li>
+                <li>Netzform: üblicherweise TN-C-S (Kombination von Neutral- und Schutzleiter in der Zuleitung, getrennt im Verbraucherbereich)</li>
+                <li>Charakteristik: Sinusförmige Wechselspannung, Effektivwert (RMS) gemäß DIN EN 60038</li>
+                <li>Normen: DIN VDE 0100 (Errichten von Niederspannungsanlagen)</li>
+            </ul>
+        </li>
+        <li>Notstrom
+            <ul>
+                <li>Generatoren: Dieselaggregate, Synchronisation (bei Parallelbetrieb)</li>
+                <li>USV-Systeme (Unterbrechungsfreie Stromversorgung): Batteriebasiert, überbrückt kurze Ausfälle</li>
+                <li>Einsatzbereiche: Notbeleuchtung, kritische Systemabsicherung bei Ausfall des Hauptnetzes</li>
+            </ul>
+        </li>
+        <li>Batterien/Akkus
+            <ul>
+                <li>Typen: Bleiakkumulatoren, Lithium-Ionen-Akkus</li>
+                <li>Anwendung: Mobile Energieversorgung, Backup-Systeme</li>
+                <li>Wissenschaftliche Aspekte: Lade-/Entladezyklen, Lebensdauer, thermisches Management</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>b) Leistungsberechnung</h3>
+    <ul>
+        <li>Grundformel: P = U × I</li>
+        <li>Scheinleistung: S = U × I (in Voltampere, VA)</li>
+        <li>Wirkleistung: P = U × I × cos φ (Watt, unter Berücksichtigung des Leistungsfaktors cos φ)</li>
+        <li>Blindleistung: Q = U × I × sin φ (Var)</li>
+        <li>Beispielrechnung:
+            <ul>
+                <li>Bei 230 V, 10 A, cos φ = 0,9 → P ≈ 230 × 10 × 0,9 ≈ 2070 W</li>
+            </ul>
+        </li>
+        <li>Relevante Normen: DIN VDE 0100; DIN EN 60038 (Nennspannungen)</li>
+    </ul>
+
+    <h3>c) Netzsysteme</h3>
+    <ul>
+        <li>TN-Systeme
+            <ul>
+                <li>TN-C: Kombination von Neutralleiter (N) und Schutzleiter (PE)</li>
+                <li>TN-S: Getrennte Führung von N und PE (höhere Sicherheit im Verbraucherbereich)</li>
+                <li>TN-C-S: Kombination in der Zuleitung, getrennt im Anschlussbereich</li>
+            </ul>
+        </li>
+        <li>TT-System: Getrennte Erdung am Verbraucher, oft ergänzt durch Fehlerstromschutzschalter (FI)</li>
+        <li>IT-System: Ungeerdete Versorgung mit Fehlerüberwachung (seltener im Veranstaltungsbereich)</li>
+    </ul>
+
+    <h2>2. Spannungsarten</h2>
+    <h3>a) Wechselspannung (AC)</h3>
+    <ul>
+        <li>Definition: Periodisch sinusförmige Spannung, wechselt regelmäßig die Richtung</li>
+        <li>Effektivwert (RMS): U_RMS = U_peak/√2 (wichtig zur Berechnung der tatsächlichen Leistung)</li>
+        <li>Phasenwinkel: In Dreiphasensystemen Verschiebung von 120° zwischen den Außenleitern</li>
+        <li>Anwendung: Standardbetrieb elektrischer Anlagen, Antrieb von Motoren, Leuchtmitteln</li>
+    </ul>
+
+    <h3>b) Gleichspannung (DC)</h3>
+    <ul>
+        <li>Definition: Konstante, nicht periodische Spannung</li>
+        <li>Kennwerte: Keine Frequenz, konstante Polarität</li>
+        <li>Anwendung: Batteriebetriebene Systeme, elektronische Steuerungen, Notstromlösungen</li>
+    </ul>
+
+    <h2>3. Stromsysteme</h2>
+    <h3>a) Einphasenstromkreis</h3>
+    <ul>
+        <li>Typische Anwendung: Haushaltssteckdosen (Schuko, 230 V)</li>
+        <li>Technische Aspekte: Kabelquerschnitt, Spannungsabfall (Berechnung nach DIN VDE 0298-4)</li>
+        <li>Berechnung: Dimensionierung der Leitungen, Absicherung (z. B. 16-A-Schalter)</li>
+    </ul>
+
+    <h3>b) Dreiphasensystem</h3>
+    <ul>
+        <li>Aufbau: 5-poliger CEE-Anschluss mit Leitern L1, L2, L3, Neutralleiter (N) und Schutzleiter (PE)</li>
+        <li>Leistungsberechnung:
+            <ul>
+                <li>Scheinleistung: S = √3 × U × I (VA)</li>
+                <li>Wirkleistung: P = √3 × U × I × cos φ (W)</li>
+            </ul>
+        </li>
+        <li>Phasenverschiebung: Jede Phase versetzt um 120° (mathematische Darstellung mittels Phasoren/Vektoren)</li>
+        <li>Phasenfolge/Drehfeld:
+            <ul>
+                <li>Wichtig: Richtige Reihenfolge (Rechtsdrehfeld vs. Linksdrehfeld) für den Betrieb von Drehstrommaschinen</li>
+                <li>Messung: Mit Drehfeldprüfern zur Bestimmung der Phasenreihenfolge</li>
+            </ul>
+        </li>
+        <li>Sicherheitsaspekte:
+            <ul>
+                <li>Lastverteilung: Gleichmäßige Verteilung zur Vermeidung von Überlastungen</li>
+                <li>Erdung: Sicherstellung eines stabilen Potenzialausgleichs, Referenz: DIN VDE 0100</li>
+            </ul>
+        </li>
+    </ul>
+    </section>
+	<section id="gesamtStrombedarf">
+  <h2>Berechnung des Gesamtstrombedarfs</h2>
+  <p>
+    Zur Ermittlung des Gesamtstrombedarfs eines elektrischen Systems ist es wichtig, die unterschiedlichen Leistungsgrößen zu berücksichtigen:
+  </p>
+  <ul>
+    <li><strong>Wirkleistung (P):</strong> Dies ist die tatsächlich in einem Verbraucher genutzte Leistung in Watt (W).</li>
+    <li><strong>Scheinleistung (S):</strong> Diese gibt die Gesamtleistung in Voltampere (VA) an und setzt sich aus Spannung und Strom zusammen. Für einen Verbraucher gilt: 
+      <br>
+      \( S = \frac{P}{\cos\varphi} \), wobei \( \cos\varphi \) der Leistungsfaktor ist.
+    </li>
+    <li><strong>Blindleistung (Q):</strong> Diese entsteht aufgrund der Phasenverschiebung zwischen Strom und Spannung und kann berechnet werden mit: 
+      <br>
+      \( Q = S \cdot \sin\varphi \) oder alternativ \( Q = \sqrt{S^2 - P^2} \).
+    </li>
+  </ul>
+  <p>
+    Bei parallel geschalteten Verbrauchern addieren sich die Wirkleistungen direkt, während sich die Scheinleistungen – sofern man vereinfachend von reinen Ohmschen Lasten ausgeht – als Summe der einzelnen Scheinleistungen berechnen lassen. Daraus folgt:
+    <br>
+    \( I_{gesamt} = \frac{\sum S_i}{U} \)
+  </p>
+  
+  <h3>Beispielaufgabe</h3>
+  <p>
+    Angenommen, in einem Haushalt werden drei Lampen parallel betrieben:
+  </p>
+  <ul>
+    <li><strong>Lamp A:</strong> 60 W LED-Lampe, \( \cos\varphi = 0.9 \)</li>
+    <li><strong>Lamp B:</strong> 40 W Halogenlampe, \( \cos\varphi = 0.7 \)</li>
+    <li><strong>Lamp C:</strong> 100 W Leuchtstofflampe, \( \cos\varphi = 0.85 \)</li>
+  </ul>
+  <p>
+    Die Netzspannung beträgt 230 V. Zur Berechnung des Gesamtstrombedarfs gehen wir wie folgt vor:
+  </p>
+  <ol>
+    <li>
+      <em>Berechnung der Scheinleistung für jede Lampe:</em>
+      <ul>
+        <li>Lamp A: 
+          \( S_A = \frac{60\,W}{0.9} \approx 66.67\,VA \)
+        </li>
+        <li>Lamp B: 
+          \( S_B = \frac{40\,W}{0.7} \approx 57.14\,VA \)
+        </li>
+        <li>Lamp C: 
+          \( S_C = \frac{100\,W}{0.85} \approx 117.65\,VA \)
+        </li>
+      </ul>
+    </li>
+    <li>
+      <em>Gesamtscheinleistung:</em>
+      <br>
+      \( S_{gesamt} = S_A + S_B + S_C \approx 66.67 + 57.14 + 117.65 \approx 241.46\,VA \)
+    </li>
+    <li>
+      <em>Berechnung des Gesamtstroms:</em>
+      <br>
+      \( I_{gesamt} = \frac{S_{gesamt}}{U} = \frac{241.46\,VA}{230\,V} \approx 1.05\,A \)
+    </li>
+  </ol>
+  <p>
+    In diesem Beispiel beträgt der Gesamtstrombedarf etwa 1,05 A. Dieser Ansatz vereinfacht die Berechnung, indem er die Vektoraddition der Scheinleistungen vernachlässigt – was für rein ohmsche Lasten und konstante Leistungsfaktoren oft ausreichend ist.
+  </p>
+</section>
+    <section id="section4">
+        <h2>4. Dreiphasenwechselspannung</h2>
+        <p>
+            Die Dreiphasenwechselspannung (auch Drehstrom genannt) ist ein elektrisches Energieversorgungssystem, bei dem drei sinusförmige Wechselspannungen gleicher Amplitude, Frequenz und Phasenlage um jeweils 120° zueinander versetzt erzeugt und übertragen werden. Dieses System bildet die Grundlage der meisten Energieversorgungsnetze und bietet erhebliche technische und wirtschaftliche Vorteile.
+        </p>
+        <h3>Grundprinzip und mathematische Grundlagen</h3>
+        <p>
+            In einem dreiphasigen System gibt es drei Spannungen, typischerweise bezeichnet als \( U_{L1}, U_{L2}, \) und \( U_{L3} \), die jeweils um 120° phasenverschoben sind. Diese Spannungen werden entweder zwischen den Phasen (Außenleiterspannung) oder zwischen einer Phase und dem Neutralleiter (Strangspannung) gemessen. 
+        </p>
+        <h4>Formeln und Definitionen:</h4>
+        <ul>
+            <li>
+                <strong>Strangspannung \( U_s \):</strong> Die Spannung zwischen einer Phase und dem Neutralleiter. Beispiel: In einem europäischen Versorgungsnetz beträgt die Strangspannung in der Regel 230 V (RMS-Wert).
+            </li>
+            <li>
+                <strong>Außenleiterspannung \( U_{LL} \):</strong> Die Spannung zwischen zwei Außenleitern. Sie wird durch die Beziehung 
+                \[
+                U_{LL} = \sqrt{3} \cdot U_s
+                \] 
+                beschrieben. Für eine Strangspannung von 230 V ergibt sich demnach eine Außenleiterspannung von ca. 400 V.
+            </li>
+            <li>
+                <strong>Phasenwinkel:</strong> Die Phasenverschiebung zwischen den Spannungen beträgt stets \( 120^\circ \). Diese Phasenlage wird in einem Zeigerdiagramm als gleichseitiges Dreieck dargestellt, was eine gleichmäßige Lastverteilung ermöglicht.
+            </li>
+            <li>
+                <strong>Netzfrequenz \( f \):</strong> In Europa beträgt die Frequenz standardmäßig 50 Hz. Das bedeutet, dass jede Phase 50 vollständige Sinusschwingungen pro Sekunde durchläuft.
+            </li>
+        </ul>
+	 <div id="zeigerDiagramm"></div>
+  <div id="sinuswellenDiagramm"></div>
+
+  <script>
+    // Zeigerdiagramm
+    (function() {
+      const width = 400, height = 400;
+      const center = { x: width / 2, y: height / 2 };
+      const radius = 150;
+
+      const svg = d3.select("#zeigerDiagramm")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+      // Kreis zur Orientierung
+      svg.append("circle")
+        .attr("cx", center.x)
+        .attr("cy", center.y)
+        .attr("r", radius)
+        .attr("fill", "none")
+        .attr("stroke", "gray")
+        .attr("stroke-width", 1);
+
+      // Zeigerkoordinaten und Zahlenwerte
+      const angles = [0, 120, 240]; // in Grad
+      const values = [230, 230, 230]; // Beispielwerte für U1, U2, U3
+
+      angles.forEach((angle, i) => {
+        const angleRad = angle * (Math.PI / 180);
+        const x = center.x + Math.cos(angleRad) * radius;
+        const y = center.y - Math.sin(angleRad) * radius;
+
+        svg.append("line")
+          .attr("x1", center.x)
+          .attr("y1", center.y)
+          .attr("x2", x)
+          .attr("y2", y)
+          .attr("stroke", i === 0 ? "red" : (i === 1 ? "blue" : "green"))
+          .attr("stroke-width", 2);
+
+        // Zahlenwerte direkt neben den Zeigern
+        svg.append("text")
+          .attr("x", x)
+          .attr("y", y)
+          .attr("dx", angle === 0 ? 10 : -10)
+          .attr("dy", angle === 0 ? -10 : 10)
+          .attr("text-anchor", "middle")
+          .attr("fill", "black")
+          .text(`${values[i]}V`);
+      });
+    })();
+
+    // Sinuswellen-Diagramm
+    (function() {
+      const width = 400, height = 200;
+      const margin = { top: 20, right: 30, bottom: 30, left: 40 };
+      const data = d3.range(0, 360, 2).map(d => ({
+        angle: d,
+        u1: Math.sin(d * Math.PI / 180),
+        u2: Math.sin((d + 120) * Math.PI / 180),
+        u3: Math.sin((d + 240) * Math.PI / 180)
+      }));
+
+      const x = d3.scaleLinear()
+        .domain([0, 360])
+        .range([margin.left, width - margin.right]);
+
+      const y = d3.scaleLinear()
+        .domain([-1.5, 1.5])
+        .range([height - margin.bottom, margin.top]);
+
+      const line = d3.line()
+        .x(d => x(d.angle))
+        .y(d => y(d.u1));
+
+      const svg = d3.select("#sinuswellenDiagramm")
+        .append("svg")
+        .attr("width", width)
+        .attr("height", height);
+
+      // Achsen
+      svg.append("g")
+        .attr("transform", `translate(0,${height - margin.bottom})`)
+        .call(d3.axisBottom(x).ticks(10).tickFormat(d => `${d}°`));
+
+      svg.append("g")
+        .attr("transform", `translate(${margin.left},0)`)
+        .call(d3.axisLeft(y).ticks(5).tickFormat(d => `${(d * 230).toFixed(0)}V`));
+
+      // Linien für U1, U2, U3
+      ["u1", "u2", "u3"].forEach((key, i) => {
+        svg.append("path")
+          .datum(data)
+          .attr("fill", "none")
+          .attr("stroke", i === 0 ? "red" : (i === 1 ? "blue" : "green"))
+          .attr("stroke-width", 2)
+          .attr("d", d3.line()
+            .x(d => x(d.angle))
+            .y(d => y(d[key])));
+      });
+    })();
+  </script>
+        <h3>Leistung in Dreiphasensystemen</h3>
+        <p>
+            Die Gesamtleistung eines Dreiphasensystems setzt sich aus der Leistung jeder einzelnen Phase zusammen. Aufgrund der symmetrischen Phasenverschiebung bleibt die gesamte elektrische Leistung im Zeitverlauf nahezu konstant.
+        </p>
+        <h4>Berechnung der Leistungen:</h4>
+        <ul>
+            <li>
+                <strong>Scheinleistung \( S \):</strong> Die Scheinleistung in einem Dreiphasensystem ist die Summe der Scheinleistungen aller drei Phasen und wird berechnet als:
+                \[
+                S = \sqrt{3} \cdot U_{LL} \cdot I
+                \]
+                wobei:
+                \begin{itemize}
+                    <li>\( S \): Scheinleistung in Voltampere (VA)</li>
+                    <li>\( U_{LL} \): Außenleiterspannung in Volt (V)</li>
+                    <li>\( I \): Stromstärke pro Phase in Ampere (A)</li>
+                </begin{itemize>
+            </li>
+            <li>
+                <strong>Wirkleistung \( P \):</strong> Die Wirkleistung, also die tatsächlich genutzte Leistung, ergibt sich unter Berücksichtigung des Leistungsfaktors \( \cos\varphi \):
+                \[
+                P = \sqrt{3} \cdot U_{LL} \cdot I \cdot \cos\varphi
+                \]
+                wobei:
+                \begin{itemize>
+                    <li>\( P \): Wirkleistung in Watt (W)</li>
+                    <li>\( \cos\varphi \): Leistungsfaktor, abhängig von der Art der Last (induktiv, kapazitiv oder rein ohmisch)</li>
+                </end{itemize>
+            </li>
+            <li>
+                <strong>Blindleistung \( Q \):</strong> Die Blindleistung ergibt sich aus:
+                \[
+                Q = \sqrt{3} \cdot U_{LL} \cdot I \cdot \sin\varphi
+                \]
+                wobei:
+                \begin{itemize>
+                    <li>\( Q \): Blindleistung in Voltampere-reaktiv (var)</li>
+                    <li>\( \sin\varphi \): Sinus des Phasenwinkels zwischen Strom und Spannung</li>
+                </end{itemize>
+            </li>
+        </ul>
+        <p>
+            In einem ideal symmetrischen Dreiphasensystem bleibt die Gesamtleistung im Zeitverlauf konstant. Dies ermöglicht eine gleichmäßigere Energieversorgung und reduziert mechanische Vibrationen in Drehstrommaschinen.
+        </p>
+        <h3>Vorteile von Dreiphasenwechselspannung</h3>
+        <ul>
+            <li>
+                <strong>Höhere Übertragungsleistung:</strong> Dreiphasensysteme können für den gleichen Leiterquerschnitt mehr Leistung übertragen als einphasige Systeme. Die Last wird auf drei Leiter verteilt, was Leitungsverluste reduziert und die Effizienz erhöht.
+            </li>
+            <li>
+                <strong>Stabilere Leistung:</strong> Die gleichmäßige Phasenverschiebung führt dazu, dass die Gesamtleistung auf der Leitung konstant bleibt, anstatt wie bei Einphasenstrom zu schwanken. Dies ist besonders wichtig für den Betrieb von Elektromotoren und anderen Geräten mit empfindlicher Elektronik.
+            </li>
+            <li>
+                <strong>Direkte Erzeugung eines Drehfelds:</strong> Drehstrommotoren benötigen keine zusätzliche Schaltung, um ein rotierendes Magnetfeld zu erzeugen. Dies vereinfacht die Konstruktion und erhöht die Zuverlässigkeit.
+            </li>
+        </ul>
+        <h3>Praktische Anwendungen</h3>
+        <p>
+            Dreiphasenwechselspannung wird in einer Vielzahl von Anwendungen eingesetzt:
+        </p>
+        <ul>
+            <li>Industrieanlagen: Große Elektromotoren, Pumpen, Kompressoren und Produktionsanlagen nutzen Drehstrom für höhere Leistung und Effizienz.</li>
+            <li>Elektrische Energieübertragung: Überregionale Übertragungsnetze verwenden Dreiphasensysteme, um Energie über lange Entfernungen mit minimalen Verlusten zu transportieren.</li>
+            <li>Gebäudetechnik: In größeren Gebäuden werden Klimaanlagen, Aufzüge und Lüftungssysteme oft mit Dreiphasenwechselspannung betrieben.</li>
+        </ul>
+        <h3>Sicherheitsaspekte</h3>
+        <ul>
+            <li>
+                <strong>Phasenfolge:</strong> Die richtige Reihenfolge der Phasen (Drehfeldrichtung) muss sichergestellt werden. Eine falsche Phasenfolge kann dazu führen, dass Motoren rückwärts laufen oder Schäden verursachen. Drehfeldprüfer werden verwendet, um die Phasenfolge vor der Inbetriebnahme zu überprüfen.
+            </li>
+            <li>
+                <strong>Erdung und Schutzmaßnahmen:</strong> In einem Dreiphasensystem ist ein stabiler Schutzleiter unerlässlich. Häufig wird ein TN-S-System verwendet, bei dem Neutralleiter und Schutzleiter getrennt geführt werden. Dies gewährleistet einen sicheren Betrieb und schützt Menschen und Geräte vor elektrischen Fehlern.
+            </li>
+            <li>
+                <strong>Überspannungsschutz:</strong> Da Dreiphasensysteme oft in größeren Anlagen eingesetzt werden, sollten Überspannungsschutzgeräte (SPD) installiert werden, um empfindliche Geräte vor Spannungsspitzen zu schützen.
+            </li>
+        </ul>
+        <h3>Zusammenfassung</h3>
+        <p>
+            Dreiphasenwechselspannung bietet ein zuverlässiges und effizientes Mittel zur Erzeugung, Übertragung und Nutzung elektrischer Energie. Durch symmetrische Phasenlage, hohe Übertragungsleistung und stabile Gesamtleistung ist sie die bevorzugte Wahl für industrielle, gewerbliche und überregionale Energieanwendungen. Dank mathematischer Grundlagen, einfacher Leistungsberechnungen und standardisierter Sicherheitsmaßnahmen ist die Dreiphasenwechselspannung eine essenzielle Technologie der modernen Energiewirtschaft.
+        </p>
+    </section>
+	 <section id="section5">
+    <h2>5. RCD (Residual Current Device)</h2>
+	<h3>Arten von RCDs</h3>
+    <ul>
+        <li>
+            <strong>Typ AC:</strong>  
+            Dieser RCD reagiert auf Wechselströme, die eine sinusförmige Wellenform haben. Er ist in Standardanwendungen weit verbreitet, wo keine speziellen Stromformen oder elektronischen Geräte mit Gleichstromanteil erwartet werden.
+        </li>
+        <li>
+            <strong>Typ A:</strong>  
+            Typ-A-RCDs erkennen sowohl sinusförmige Wechselströme als auch pulsierende Gleichfehlerströme. Dies ist besonders wichtig, wenn Geräte wie Waschmaschinen, Durchlauferhitzer oder LED-Beleuchtungssysteme betrieben werden, da diese oft Gleichstromanteile erzeugen. Ein Typ-A-RCD sorgt dafür, dass auch solche Fehlerströme rechtzeitig abgeschaltet werden.
+        </li>
+        <li>
+            <strong>Typ B:</strong>  
+            Typ-B-RCDs erkennen alle Fehlerstromarten, einschließlich Wechsel-, pulsierende Gleich- und reine Gleichströme. Sie sind insbesondere für Anwendungen erforderlich, in denen Frequenzumrichter, Photovoltaikwechselrichter oder Ladestationen für Elektrofahrzeuge genutzt werden. Diese Geräte können gleichgerichtete Ströme erzeugen, die von herkömmlichen RCDs (Typ AC oder Typ A) nicht erfasst werden.
+        </li>
+        <li>
+            <strong>Typ F:</strong>  
+            Dieser RCD wurde speziell für moderne Haushalts- und Gewerbegeräte entwickelt, die Frequenzen oberhalb der Standardnetzfrequenz (50/60 Hz) erzeugen können. Typ-F-RCDs erkennen sowohl sinusförmige Wechsel- als auch pulsierende Gleichströme und reagieren auf Ströme bis 1 kHz. Dies ist nützlich, wenn Geräte wie energieeffiziente Wärmepumpen oder Klimaanlagen betrieben werden.
+        </li>
+        <li>
+            <strong>Typ B+:</strong>  
+            Ein Typ-B+-RCD bietet zusätzliche Sicherheitsreserven und schaltet auch bei besonders hohen Frequenzen (über 1 kHz) sicher ab. Sie sind für anspruchsvolle industrielle Anwendungen vorgesehen, bei denen komplexe Lasten mit hohem Gleichstromanteil auftreten.
+        </li>
+    </ul>
+    <p>
+        Ein RCD (auch FI-Schutzschalter genannt) ist ein Sicherheitseinrichtung, die Personen und Geräte vor gefährlichen elektrischen Fehlerströmen schützt. Der RCD misst den Stromfluss in den hin- und zurückführenden Leitern eines Stromkreises und schaltet den Stromkreis ab, sobald ein Differenzstrom (Fehlerstrom) festgestellt wird. Dieser Differenzstrom weist darauf hin, dass Strom durch einen unerwünschten Weg, wie z. B. durch eine Person oder eine fehlerhafte Isolation, fließt.
+    </p>
+    <h3>Funktionsweise</h3>
+    <p>
+        Ein RCD überwacht ständig die Stromstärken im Außenleiter und im Neutralleiter. Bei einem ordnungsgemäß funktionierenden Stromkreis ist der Strom im Außenleiter gleich dem Strom im Neutralleiter. Wenn eine Differenz auftritt, zum Beispiel weil ein Teil des Stroms über den Schutzleiter oder eine Person abfließt, erkennt der RCD dies und schaltet den Stromkreis in Bruchteilen einer Sekunde ab.
+    </p>
+    <h3>Schutzarten und Auslöseströme</h3>
+    <ul>
+        <li>
+            <strong>Personenschutz:</strong> RCDs mit einer Auslöseschwelle von maximal 30 mA sind für den direkten Schutz von Personen vorgesehen. Sie schalten schnell ab, bevor lebensgefährliche Strommengen durch den menschlichen Körper fließen können.
+        </li>
+        <li>
+            <strong>Brandschutz:</strong> RCDs mit einer Auslöseschwelle von 300 mA werden in festgelegten Anlagen eingesetzt, um Brände durch Fehlerströme, die in Isolationsschäden entstehen können, zu verhindern.
+        </li>
+    </ul>
+    <h3>Typen von RCDs</h3>
+    <ul>
+        <li>
+            <strong>Typ AC:</strong> Schaltet bei sinusförmigen Wechselströmen ab. Standard in vielen Haushaltsinstallationen.
+        </li>
+        <li>
+            <strong>Typ A:</strong> Erkennt zusätzlich pulsierende Gleichfehlerströme. Häufig verwendet in Anlagen mit elektronischen Geräten, wie z. B. Waschmaschinen oder Durchlauferhitzern.
+        </li>
+        <li>
+            <strong>Typ B:</strong> Erkennt sowohl Wechsel- als auch Gleichfehlerströme. Eingesetzt in Anlagen mit Wechselrichtern, wie etwa Photovoltaikanlagen.
+        </li>
+    </ul>
+    <h3>Normen und Vorschriften</h3>
+    <p>
+        Die Installation und der Einsatz von RCDs unterliegen genauen Vorschriften. In Europa sind die Anforderungen insbesondere in der DIN VDE 0100-410 geregelt, die Schutzmaßnahmen gegen elektrischen Schlag beschreibt. Zusätzliche Normen, wie DIN VDE 0664, spezifizieren die technischen Anforderungen und Prüfverfahren für RCDs.
+    </p>
+    <h3>Prüfung und Wartung</h3>
+    <p>
+        RCDs müssen regelmäßig geprüft werden, um sicherzustellen, dass sie im Fehlerfall schnell und zuverlässig auslösen. Dazu gehört:
+    </p>
+    <ul>
+        <li>
+            Drücken der Testtaste (meist halbjährlich oder jährlich), um die Auslösefunktion zu überprüfen.
+        </li>
+        <li>
+            Messung des Auslösestroms und der Auslösezeit mit einem Prüfgerät durch eine Fachkraft.
+        </li>
+    </ul>
+    <p>
+        Eine ordnungsgemäße Prüfung und Wartung stellt sicher, dass der RCD immer einsatzbereit ist und den notwendigen Schutz bietet.
+    </p>
+</section>  
+<section id="rcd-ausloese-tabelle">
+    <h3>Auslöseschwellen und deren Bedeutung</h3>
+    <p>
+        In der Dokumentation und auf dem Gehäuse eines RCD sind bestimmte Auslöseschwellen angegeben. Diese Schwellen definieren, bei welchem Fehlerstrom der RCD auslöst. Um die Werte korrekt zu interpretieren, hilft eine einfache Tabelle, die zwischen den unterschiedlichen RCD-Typen und ihren typischen Auslösebereichen unterscheidet.
+    </p>
+    <h4>Typische Auslösewerte und Anwendungsbereiche:</h4>
+    <table>
+        <thead>
+            <tr>
+                <th>RCD-Typ</th>
+                <th>Auslösestrom (IΔn)</th>
+                <th>Hauptanwendungsbereiche</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Typ AC</td>
+                <td>10 mA, 30 mA, 100 mA, 300 mA</td>
+                <td>Standard-Haushaltsstromkreise ohne Geräte mit Gleichstromanteil</td>
+            </tr>
+            <tr>
+                <td>Typ A</td>
+                <td>10 mA, 30 mA, 100 mA</td>
+                <td>Geräte mit pulsierenden Gleichfehlerströmen, wie Waschmaschinen und LED-Beleuchtung</td>
+            </tr>
+            <tr>
+                <td>Typ B</td>
+                <td>30 mA, 100 mA, 300 mA</td>
+                <td>Industrielle Anwendungen, Wechselrichter, Photovoltaik</td>
+            </tr>
+            <tr>
+                <td>Typ F</td>
+                <td>30 mA, 100 mA</td>
+                <td>Wärmepumpen, Frequenzumrichter</td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>Interpretation der Tabelle:</h4>
+    <ul>
+        <li><strong>Personenschutz:</strong>  
+        Ein RCD mit einem Auslösestrom von 30 mA ist so empfindlich, dass er bei kleinen Fehlerströmen auslöst, bevor ein Mensch gefährlich hohen Strömen ausgesetzt wird. Dies ist der Standardwert in den meisten Haushalten.
+        </li>
+        <li><strong>Brandschutz:</strong>  
+        RCDs mit höheren Auslöseströmen (z. B. 300 mA) werden verwendet, um Schutz gegen Brände zu bieten, die durch Isolationsfehler verursacht werden können.
+        </li>
+    </ul>
+    <p>
+        Um die Tabelle richtig auszulesen, überprüft man den angegebenen Typ des RCD (z. B. Typ AC, A, B) und ordnet ihm die passende Auslöseschwelle zu. Dies hilft dabei zu entscheiden, ob der RCD für den vorgesehenen Einsatzzweck geeignet ist.
+    </p>
+</section>	
+<section id="rcd-tabelle">
+    <h3>Übersicht der RCD-Typen</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>RCD-Typ</th>
+                <th>Erkennung</th>
+                <th>Beispielanwendung</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Typ AC</td>
+                <td>Sinusförmige Wechselströme</td>
+                <td>Standard-Haushaltsinstallationen</td>
+            </tr>
+            <tr>
+                <td>Typ A</td>
+                <td>Sinusförmige Wechsel- und pulsierende Gleichfehlerströme</td>
+                <td>Moderne Haushaltsgeräte, LED-Beleuchtung</td>
+            </tr>
+            <tr>
+                <td>Typ B</td>
+                <td>Wechsel-, pulsierende Gleich- und reine Gleichfehlerströme</td>
+                <td>Photovoltaikanlagen, Ladeinfrastruktur für E-Fahrzeuge</td>
+            </tr>
+            <tr>
+                <td>Typ F</td>
+                <td>Sinusförmige Wechsel- und pulsierende Gleichfehlerströme bis 1 kHz</td>
+                <td>Wärmepumpen, Frequenzumrichter</td>
+            </tr>
+        </tbody>
+    </table>
+</section>   
+<section id="ueberstrom-schutzeinrichtungen">
+    <h2>6. Überstrom-Schutzeinrichtungen</h2>
+    <p>
+        Überstrom-Schutzeinrichtungen sind wichtige Sicherheitsvorrichtungen in elektrischen Anlagen. Sie verhindern Schäden an Leitungen, Geräten und Verbrauchern, indem sie Stromkreise bei zu hohen Strömen unterbrechen. Überströme können durch Kurzschlüsse, Überlastungen oder fehlerhafte Geräte entstehen. Zu den gängigsten Überstrom-Schutzeinrichtungen zählen Sicherungen und Leitungsschutzschalter.
+    </p>
+    <h3>Arten von Überstrom-Schutzeinrichtungen</h3>
+    <ul>
+        <li>
+            <strong>Sicherungen:</strong>  
+            Eine Sicherung enthält ein Schmelzelement, das bei einem bestimmten Stromfluss (dem Nennstrom) schmilzt und so den Stromkreis unterbricht. Sicherungen gibt es in verschiedenen Formen, z. B.:
+            <ul>
+                <li><strong>Schraubsicherungen:</strong> Traditionelle Sicherungen in Haushaltsinstallationen. Ihr Schmelzdraht brennt bei Überstrom durch und trennt den Stromkreis dauerhaft. Sie müssen nach dem Auslösen ersetzt werden.</li>
+                <li><strong>NH-Sicherungen (Niederspannungs-Hochleistungs-Sicherungen):</strong> In industriellen Anwendungen weit verbreitet. Sie bieten hohe Schaltleistungen und kurze Abschaltzeiten.</li>
+                <li><strong>Feinsicherungen:</strong> Kleine Sicherungen, die elektronische Geräte vor Überströmen schützen.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>Leitungsschutzschalter:</strong>  
+            Leitungsschutzschalter (LS-Schalter) sind wiederverwendbare Schutzeinrichtungen, die automatisch abschalten, wenn der Strom einen bestimmten Schwellenwert überschreitet. Anders als Sicherungen können sie nach der Auslösung wieder eingeschaltet werden. Es gibt verschiedene Typen von LS-Schaltern:
+            <ul>
+                <li><strong>B-Charakteristik:</strong> Für Haushaltsstromkreise und Geräte mit geringem Einschaltstrom.</li>
+                <li><strong>C-Charakteristik:</strong> Für Kreise mit höheren Einschaltströmen, z. B. für Maschinen oder Beleuchtungsanlagen.</li>
+                <li><strong>D-Charakteristik:</strong> Für Anlagen mit sehr hohen Einschaltströmen, wie Transformatoren oder Motoren.</li>
+            </ul>
+        </li>
+    </ul>
+    <h3>Wichtige Kenngrößen</h3>
+    <ul>
+        <li>
+            <strong>Nennstrom (I<sub>N</sub>):</strong>  
+            Der Strom, den die Schutzeinrichtung bei normalem Betrieb ohne Unterbrechung führen kann.
+        </li>
+        <li>
+            <strong>Abschaltstrom:</strong>  
+            Der Strom, bei dem die Schutzeinrichtung auslöst und den Stromkreis unterbricht.
+        </li>
+        <li>
+            <strong>Schaltvermögen:</strong>  
+            Die maximale Stromstärke, die die Einrichtung sicher unterbrechen kann, ohne beschädigt zu werden.
+        </li>
+    </ul>
+    <h3>Normen und Vorschriften</h3>
+    <p>
+        Die Installation und der Einsatz von Überstrom-Schutzeinrichtungen sind in verschiedenen Normen geregelt, darunter:
+        </p>
+        <ul>
+        <li><strong>DIN VDE 0100:</strong> Vorschriften für das Errichten von Niederspannungsanlagen, einschließlich der Schutzmaßnahmen gegen Überstrom.</li>
+        <li><strong>DIN VDE 0641:</strong> Anforderungen und Prüfbedingungen für Leitungsschutzschalter.</li>
+        <li><strong>IEC 60269:</strong> Internationale Norm für Sicherungen.</li>
+    </ul>
+    <h3>Zusammenfassung</h3>
+    <p>
+        Überstrom-Schutzeinrichtungen spielen eine zentrale Rolle bei der Sicherheit elektrischer Anlagen. Sie schützen Leitungen und Geräte vor Überhitzung und mechanischen Schäden, indem sie den Stromkreis bei Überlastung oder Kurzschluss unterbrechen. Die Auswahl der richtigen Sicherungen oder Leitungsschutzschalter sowie deren korrekte Dimensionierung sind essenziell, um einen zuverlässigen Schutz zu gewährleisten.
+    </p>
+	<div id="ausloeseTabelle"></div>
+	<div id="ausloeseInfo" style="margin-top:20px; padding:10px; background:#1e1e1e; color:#fff; border-radius:5px;"></div>
+	<script>
+const data = [
+  { charakteristik: 'B', faktor: '3 bis 5 × I\u2099', anwendung: 'Standard-Haushaltsschaltungen' },
+  { charakteristik: 'C', faktor: '5 bis 10 × I\u2099', anwendung: 'Beleuchtungs- und Motorstromkreise' },
+  { charakteristik: 'D', faktor: '10 bis 20 × I\u2099', anwendung: 'Transformatoren, Motoren mit hohem Einschaltstrom' }
+];
+
+// Tabelle erstellen
+const table = d3.select('#ausloeseTabelle')
+  .append('table')
+  .style('width', '100%')
+  .style('border-collapse', 'collapse')
+  .style('border', '1px solid #555');
+
+const thead = table.append('thead');
+const tbody = table.append('tbody');
+
+// Kopfzeile
+thead.append('tr')
+  .selectAll('th')
+  .data(['Charakteristik', 'Auslösefaktor', 'Typische Anwendung'])
+  .enter()
+  .append('th')
+  .text(d => d)
+  .style('padding', '10px')
+  .style('background', '#007BFF')
+  .style('color', '#fff')
+  .style('border', '1px solid #555');
+
+// Zeilen erstellen
+const rows = tbody.selectAll('tr')
+  .data(data)
+  .enter()
+  .append('tr')
+  .style('cursor', 'pointer')
+  .on('click', (event, d) => {
+    d3.select('#ausloeseInfo').html(`
+      <strong>Auslösestrom-Berechnung (${d.charakteristik}-Charakteristik):</strong><br>
+      Der tatsächliche Auslösestrom (I<sub>auslöse</sub>) ergibt sich aus:<br><br>
+      <div style="padding:8px; background:#333; border-radius:5px;">
+        I<sub>auslöse</sub> = Faktor × I<sub>N</sub><br>
+        (${d.faktor})
+      </div><br>
+      <strong>Beispiel:</strong><br>
+      Bei einem Leitungsschutzschalter mit I<sub>N</sub> = 16 A (Charakteristik ${d.charakteristik}) gilt:<br><br>
+      ${d.faktor.replace('Iₙ', '16 A')}<br>
+      Dies bedeutet, dass der LS-Schalter typischerweise zwischen ${d.faktor.replace('Iₙ', '16 A')} (48 A bis ${d.charakteristik === 'B' ? '80 A' : d.charakteristik === 'C' ? '160 A' : '320 A'}) auslöst.
+    `);
+  });
+
+rows.selectAll('td')
+  .data(d => [d.charakteristik, d.faktor, d.anwendung])
+  .enter()
+  .append('td')
+  .text(d => d)
+  .style('padding', '10px')
+  .style('text-align', 'center')
+  .style('border', '1px solid #555')
+  .style('background', '#222')
+  .style('color', '#fff');
+
+// Anfangstext
+d3.select('#ausloeseInfo').html(`
+  <strong>Klicke auf eine Tabellenzeile, um die Auslösestrom-Berechnung anzuzeigen.</strong><br><br>
+  <em>Der Auslösestrom von Leitungsschutzschaltern wird berechnet, indem der Nennstrom I<sub>N</sub> mit dem angegebenen Faktor multipliziert wird.</em>
+`);
+</script>
+<section id="ausloesezeit-berechnung">
+  <h2>Berechnung der Auslösezeit anhand der Kennlinie</h2>
+  <div style="padding:15px; border-radius:5px; background:#1e1e1e; color:#fff;">
+
+    <label>Betriebsstrom I<sub>B</sub> in A:</label>
+    <input type="number" id="betriebsstrom" value="24" min="0" style="width:80px;">
+
+    <label style="margin-left:10px;">LS-Schalter (I<sub>N</sub>) in A:</label>
+    <input type="number" id="nennstrom" value="16" min="1" style="width:80px;">
+
+    <select id="lsTyp" style="margin-left:10px;">
+      <option value="B">Charakteristik B</option>
+      <option value="C" selected>Charakteristik C</option>
+      <option value="D">Charakteristik D</option>
+    </select>
+
+    <button onclick="berechneNFach()" style="margin-left:10px;">Berechnen</button>
+
+    <div id="ergebnisNFach" style="margin-top:15px; padding:10px; background:#333; border-radius:5px;">
+      <!-- Ergebnis erscheint hier -->
+    </div>
+  </div>
+</section>
+<script>
+function berechneNFach() {
+  const IB = parseFloat(document.getElementById('betriebsstrom').value);
+  const IN = parseFloat(document.getElementById('nennstrom').value);
+  const typ = document.getElementById('lsTyp').value;
+
+  if(IN <= 0) {
+    alert("Nennstrom muss größer als 0 sein.");
+    return;
+  }
+
+  const nFach = (IB / IN).toFixed(2);
+
+  let hinweis;
+  if(nFach < 1) {
+    hinweis = "Unter dem Nennstrom – LS-Schalter löst nicht aus.";
+  } else {
+    hinweis = `Nutze den ${nFach}-fachen Wert in der Kennlinie der Charakteristik ${typ}, um die Auslösezeit abzulesen.`;
+  }
+
+  document.getElementById('ergebnisNFach').innerHTML = `
+    Der Betriebsstrom ist das <strong>${nFach}</strong>-fache des Nennstroms (I<sub>N</sub>).<br><br>
+    ${hinweis}
+  `;
+}
+
+// Erste Berechnung beim Laden der Seite
+document.addEventListener('DOMContentLoaded', berechneNFach);
+</script>
+<div id="ausloeseKennlinie">
+    <img src="Lern/Bilder/pic3.jpg" alt="Auslösekennlinie Leitungsschutzschalter" style="max-width:100%;height:auto;">
+</div>
+<section id="dimensionierung-ls">
+  <h2>Berechnung des Nennstroms (I<sub>N</sub>) eines LS-Schalters</h2>
+  <div style="padding:15px; border-radius:5px; background:#1e1e1e; color:#fff;">
+
+    <label>Leistung (P in Watt):</label>
+    <input type="number" id="leistung" value="9000" min="1" style="width:100px;">
+
+    <label style="margin-left:10px;">Spannung (U):</label>
+    <select id="spannung">
+      <option value="230">230 V (einphasig)</option>
+      <option value="400" selected>400 V (dreiphasig)</option>
+    </select>
+
+    <label style="margin-left:10px;">Leistungsfaktor (cos φ):</label>
+    <input type="number" id="cosphi" value="0.9" step="0.01" min="0.1" max="1" style="width:60px;">
+
+    <button onclick="berechneNennstrom()" style="margin-left:10px;">Berechnen</button>
+
+    <div id="ergebnisIn" style="margin-top:15px; padding:10px; background:#333; border-radius:5px;">
+      <!-- Ergebnis erscheint hier -->
+    </div>
+  </div>
+</section>
+<script>
+function berechneNennstrom() {
+  const P = parseFloat(document.getElementById('leistung').value);
+  const U = parseFloat(document.getElementById('spannung').value);
+  const cosphi = parseFloat(document.getElementById('cosphi').value);
+  
+  let In;
+
+  if(U === 230) {
+    In = P / (U * cosphi);
+  } else {
+    In = P / (Math.sqrt(3) * U * cosphi);
+  }
+
+  In = In.toFixed(2);
+
+  document.getElementById('ergebnisIn').innerHTML = `
+    Der erforderliche Nennstrom (I<sub>N</sub>) des LS-Schalters beträgt: <strong>${In} A</strong>.<br>
+    ➜ Wähle einen LS-Schalter mit dem nächsthöheren Standardwert (z.B. 6A, 10A, 13A, 16A, 20A, 25A, 32A, etc.).
+  `;
+}
+
+// Automatische Erstberechnung beim Laden der Seite
+document.addEventListener('DOMContentLoaded', berechneNennstrom);
+</script>
+</section>
+<section id="spannungsfall">
+  <h2>Spannungsfall in elektrischen Anlagen</h2>
+  <p>
+    Der Spannungsfall beschreibt den Spannungsabfall entlang eines elektrischen Leiters aufgrund des Leiterwiderstands. Ein zu hoher Spannungsfall kann die Funktion von Geräten beeinträchtigen und zu ineffizientem Betrieb führen.
+  </p>
+  
+  <h3>Grundlagen</h3>
+  <ul>
+    <li><strong>Definition:</strong> Differenz zwischen der eingespeisten Spannung und der Spannung am Verbraucher.</li>
+    <li><strong>Ursachen:</strong> Leitungswiderstand und Stromfluss führen zu einem Spannungsabfall entlang des Leiters.</li>
+  </ul>
+  
+  <h3>Formel zur Berechnung</h3>
+  <p>Die allgemeine Formel lautet:</p>
+  <p style="text-align: center; font-size: 1.2em;">\( \Delta U = \frac{2 \cdot L \cdot I \cdot \rho}{A} \)</p>
+  <ul>
+    <li><strong>L:</strong> Länge des Leiters in Metern (m)</li>
+    <li><strong>I:</strong> Stromstärke in Ampere (A)</li>
+    <li><strong>\(\rho\):</strong> spezifischer Widerstand des Leitermaterials in Ω·mm²/m (z. B. ca. 0,0178 Ω·mm²/m für Kupfer)</li>
+    <li><strong>A:</strong> Querschnitt des Leiters in mm²</li>
+  </ul>
+  
+  <h3>Beispielrechnung</h3>
+  <p>Angenommen, folgende Werte liegen vor:</p>
+  <ul>
+    <li>L = 30 m</li>
+    <li>I = 32 A</li>
+    <li>A = 16 mm²</li>
+    <li>Für Kupfer: \( \rho \approx 0,0178 \, \Omega\cdot mm^2/m \)</li>
+  </ul>
+  <p>Dann berechnet sich der Spannungsfall wie folgt:</p>
+  <p style="text-align: center; font-size: 1.2em;">\( \Delta U = \frac{2 \cdot 30 \cdot 32 \cdot 0,0178}{16} \approx 2.136\,V \)</p>
+  
+  <h3>Normative Vorgaben</h3>
+  <ul>
+    <li>Nach DIN VDE 0100-520 darf der Spannungsfall in Hauptstromkreisen in der Regel nicht mehr als 3 % betragen.</li>
+    <li>Für eine Netzspannung von 400 V entspricht dies einem maximal zulässigen Spannungsabfall von etwa 12 V.</li>
+  </ul>
+  
+  <h3>Wichtige Hinweise</h3>
+  <ul>
+    <li>Ein zu hoher Spannungsfall kann zu einem Leistungsverlust und Funktionsstörungen von Geräten führen.</li>
+    <li>Die korrekte Berechnung des Spannungsfalls ist entscheidend für die Dimensionierung von Leitungen in elektrischen Anlagen.</li>
+    <li>Bei der Planung sollte stets ein Sicherheitsfaktor berücksichtigt werden.</li>
+  </ul>
+</section>
+<section id="spannungsfallCalculator">
+  <h2>Spannungsfall Calculator</h2>
+  <p>Berechne den Spannungsfall entlang eines Leiters. Gib die folgenden Werte ein:</p>
+  <form id="spannungsfallForm">
+    <label for="length">Leiterlänge (L in m): </label>
+    <input type="number" id="length" name="length" step="any" required>
+    <br>
+    <label for="current">Strom (I in A): </label>
+    <input type="number" id="current" name="current" step="any" required>
+    <br>
+    <label for="rho">spezifischer Widerstand (ρ in Ω·mm²/m): </label>
+    <input type="number" id="rho" name="rho" step="any" required value="0.0178">
+    <br>
+    <label for="area">Querschnitt (A in mm²): </label>
+    <input type="number" id="area" name="area" step="any" required>
+    <br>
+    <button type="button" id="calculateButton">Berechnen</button>
+  </form>
+  <p id="result">Der Spannungsfall beträgt: -- V</p>
+</section>
+
+<script>
+  document.getElementById('calculateButton').addEventListener('click', function() {
+    // Werte aus den Inputfeldern auslesen und in Zahlen umwandeln
+    const L = parseFloat(document.getElementById('length').value);
+    const I = parseFloat(document.getElementById('current').value);
+    const rho = parseFloat(document.getElementById('rho').value);
+    const A = parseFloat(document.getElementById('area').value);
+
+    // Überprüfen, ob alle Werte gültig sind und der Querschnitt nicht 0 ist
+    if (isNaN(L) || isNaN(I) || isNaN(rho) || isNaN(A) || A === 0) {
+      alert("Bitte alle Felder korrekt ausfüllen!");
+      return;
+    }
+    
+    // Berechnung: ΔU = (2 * L * I * ρ) / A
+    const voltageDrop = (2 * L * I * rho) / A;
+    
+    // Ergebnis anzeigen (auf 3 Nachkommastellen gerundet)
+    document.getElementById('result').innerHTML = `Der Spannungsfall beträgt: ${voltageDrop.toFixed(3)} V`;
+  });
+</script>
+<section id="spannungsfall-dreiphasen">
+  <h2>Spannungsfall in Dreiphasen-Wechselstromsystemen &amp; Wirkungsgrad</h2>
+  
+  <h3>Spannungsfall in Dreiphasen-Systemen</h3>
+  <p>
+    In Dreiphasen-Wechselstromsystemen wird der Spannungsfall entlang der Leitungen durch den Leiterwiderstand und den Strom in jeder Phase verursacht. Aufgrund der symmetrischen Anordnung der Phasen ergibt sich eine modifizierte Berechnungsformel.
+  </p>
+  <p>
+    Für ein ideal symmetrisches System gilt beispielsweise:
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    \( \Delta U_{LL} = \sqrt{3} \cdot \frac{L \cdot I \cdot \rho}{A} \)
+  </p>
+  <ul>
+    <li><strong>L:</strong> Leitungslänge in Metern (m)</li>
+    <li><strong>I:</strong> Strom in Ampere (A) pro Phase</li>
+    <li><strong>\(\rho\):</strong> spezifischer Widerstand des Leitermaterials (z. B. ca. 0,0178 Ω·mm²/m für Kupfer)</li>
+    <li><strong>A:</strong> Leiterquerschnitt in mm²</li>
+  </ul>
+  <p>
+    <em>Beispiel:</em> Bei L = 30 m, I = 32 A, ρ = 0,0178 Ω·mm²/m und A = 16 mm²:
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    \( \Delta U_{LL} = \sqrt{3} \cdot \frac{30 \cdot 32 \cdot 0.0178}{16} \approx 2.14\,V \)
+  </p>
+  
+  <h3>Wirkungsgrad</h3>
+  <p>
+    Der Wirkungsgrad \( \eta \) beschreibt das Verhältnis der vom Verbraucher genutzten (nützlichen) Leistung zur zugeführten elektrischen Gesamtleistung. Verluste, etwa durch Spannungsabfälle in den Leitungen, verringern den Wirkungsgrad.
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    \( \eta = \frac{P_{nutz}}{P_{zugeführt}} \times 100\% \)
+  </p>
+  <ul>
+    <li><strong>P<sub>nutz</sub>:</strong> Nutzbare Leistung, die den Verbrauchern zur Verfügung steht</li>
+    <li><strong>P<sub>zugeführt</sub>:</strong> Gesamt zugeführte Leistung</li>
+  </ul>
+  <p>
+    Ein hoher Spannungsfall führt zu zusätzlichen Verlusten, wodurch der Wirkungsgrad sinkt. Daher ist es wichtig, die Leitungsdimensionierung so zu wählen, dass der Spannungsfall innerhalb zulässiger Grenzen bleibt, um eine möglichst hohe Effizienz zu gewährleisten.
+  </p>
+  
+  <h3>Praktische Hinweise</h3>
+  <ul>
+    <li>Berechne den Spannungsfall für jeden Abschnitt der Anlage, um sicherzustellen, dass dieser innerhalb der normativen Grenzen liegt.</li>
+    <li>Berücksichtige bei der Planung auch mögliche Ungleichlasten oder Phasenverschiebungen, die den Spannungsfall beeinflussen können.</li>
+    <li>Ein optimal dimensionierter Leiter trägt dazu bei, dass der Wirkungsgrad der gesamten Anlage möglichst hoch bleibt.</li>
+  </ul>
+</section>
+<section id="spannungsfall-cosphi">
+  <h2>Spannungsfall mit Leistungsfaktor \( \cos\varphi \)</h2>
+  <p>
+    Der Spannungsfall in einem Stromkreis wird größer, wenn der Strom nicht in Phase zur Spannung läuft – z. B. bei Motoren oder Leuchtmitteln mit Vorschaltgeräten. Der Leistungsfaktor \cos\varphi beschreibt diesen Effekt.
+  </p>
+
+  <h3>Einphasiger Wechselstrom:</h3>
+  <p>
+    Der Spannungsfall bei Wechselstrom mit Wirkleistung \( P , Spannung  U \), Leiterlänge \( l \), spezifischem Widerstand \( \rho \) und Querschnitt \( A \) ergibt sich durch:
+  </p>
+  <p style="text-align: center;">
+    \( \Delta U = \frac{2 \cdot \rho \cdot l \cdot P}{A \cdot U \cdot \cos\varphi} \)
+  </p>
+
+  <h3>Dreiphasiger Wechselstrom (Drehstrom):</h3>
+  <p>Im Drehstromsystem kommt zusätzlich der Faktor \( \sqrt{3} \) hinzu:</p>
+  <p style="text-align: center;">
+    \( \Delta U = \frac{\sqrt{3} \cdot \rho \cdot l \cdot P}{A \cdot U \cdot \cos\varphi}\)
+  </p>
+  <h4>Erklärung der Größen:</h4>
+  <ul>
+    <li>\( \rho \) = spezifischer Widerstand (z. B. Kupfer: 0,0178 Ω·mm²/m)</li>
+    <li>\( l \) = Leitungslänge in Metern (nur eine Richtung, Faktor 2 ist bereits in der Formel enthalten)</li>
+    <li>\( A \) = Leiterquerschnitt in mm²</li>
+    <li>\( P \) = Wirkleistung in Watt</li>
+    <li>\( U \) = Spannung in Volt (z. B. 230 V oder 400 V)</li>
+    <li>\( \cos\varphi \) = Leistungsfaktor (zwischen 0 und 1)</li>
+  </ul>
+</section>
+<section id="kabelarten">
+  <h2>Kabelarten in der Veranstaltungstechnik</h2>
+  <p>
+    In der Veranstaltungstechnik ist die Auswahl der richtigen Kabel von entscheidender Bedeutung, um Sicherheit, Flexibilität und Zuverlässigkeit zu gewährleisten. Unterschiedliche Kabeltypen weisen verschiedene Eigenschaften in Bezug auf mechanische Belastbarkeit, Flexibilität und Brandschutz auf. Im Folgenden finden Sie eine Übersicht zu gängigen Kabelarten gemäß deutscher Standards sowie Hinweise, welche Kabel in der Veranstaltungstechnik typischerweise zugelassen sind und warum.
+  </p>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Kabeltyp</th>
+        <th>Eigenschaften</th>
+        <th>Typische Anwendung</th>
+        <th>Zulässigkeit in der Veranstaltungstechnik</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>H05RN‑F</td>
+        <td>
+          – Flexible, gummibeschichtete Isolierung<br>
+          – Für geringere Spannungen und Belastungen ausgelegt
+        </td>
+        <td>
+          Leichte Anwendungen, z. B. in Installationen mit niedrigerem Strombedarf
+        </td>
+        <td>
+          Oft nicht zugelassen für Bühnen- und Hochstromanwendungen, da die mechanische Belastbarkeit und der Brandschutz geringer sind.
+        </td>
+      </tr>
+      <tr>
+        <td>H07RN‑F</td>
+        <td>
+          – Robuste, flexible Gummibeschichtung<br>
+          – Hohe mechanische und thermische Belastbarkeit
+        </td>
+        <td>
+          Mobile und temporäre Anlagen, z. B. Bühnenbeleuchtung, Generatoranschlüsse
+        </td>
+        <td>
+          Weit verbreitet und zugelassen, da er hohe Sicherheitsstandards (insbesondere im Brandschutz) erfüllt.
+        </td>
+      </tr>
+      <tr>
+        <td>HO3RN‑F</td>
+        <td>
+          – Ähnlich wie H07RN‑F, jedoch mit speziellen Eigenschaften (z. B. erhöhter Flexibilität oder Chemikalienbeständigkeit)
+        </td>
+        <td>
+          Anwendungen, bei denen zusätzlich zur mechanischen Belastbarkeit besondere Umweltanforderungen (wie chemische Einflüsse) bestehen
+        </td>
+        <td>
+          Kann zugelassen sein, sofern die spezifischen Eigenschaften den Sicherheits- und Betriebsanforderungen in der Veranstaltungstechnik entsprechen.
+        </td>
+      </tr>
+      <tr>
+        <td>H07RF‑F</td>
+        <td>
+          – Flammhemmend (RF = flame retardant)<br>
+          – Hohe mechanische Stabilität und Robustheit
+        </td>
+        <td>
+          Installationen, bei denen Brandschutz besonders wichtig ist, z. B. in großen Veranstaltungsanlagen oder bei der Verwendung von Hochleistungsgeräten
+        </td>
+        <td>
+          Besonders geschätzt in der Veranstaltungstechnik, da zusätzliche Brandschutzanforderungen erfüllt werden.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h3>Erklärung und Anforderungen</h3>
+  <p>
+    In der Veranstaltungstechnik werden Kabel häufig in temporären, mobilen Installationen eingesetzt. Neben der elektrischen Belastbarkeit spielen hierbei Flexibilität und Brandschutz eine zentrale Rolle. Kabel wie der <strong>H07RN‑F</strong> und seine flammhemmenden Varianten wie <strong>H07RF‑F</strong> sind daher bevorzugt, da sie mechanischen Belastungen und hohen Temperaturen im Brandfall besser standhalten. Kabel mit der Bezeichnung <strong>H05RN‑F</strong> eignen sich für leichtere Anwendungen, sind jedoch aufgrund ihrer geringeren mechanischen und thermischen Eigenschaften in kritischen Bereichen oft nicht zugelassen. <strong>HO3RN‑F</strong> bietet alternative Eigenschaften, die unter speziellen Bedingungen – etwa erhöhter Flexibilität oder chemischer Beständigkeit – von Vorteil sein können.
+  </p>
+</section>
+<section id="strombelastbarkeit">
+    <h2>Kabelarten in der Veranstaltungstechnik – Strombelastbarkeit</h2>
+    <p>
+      Flexible Kabel sind in der Veranstaltungstechnik sehr wichtig. Hier werden z. B. Kabel wie <strong>H07RN‑F</strong> und Kabel der Bezeichnung <strong>Han16</strong> eingesetzt. Die Strombelastbarkeit (Iₘₐₓ) gibt an, wie viel Strom ein Kabel sicher führen kann, ohne dass die Temperatur zu stark ansteigt. Faktoren sind dabei:
+    </p>
+    <ul>
+      <li>Leiterquerschnitt</li>
+      <li>Kabeltyp und Isolierung</li>
+      <li>Verlegeart (Luft, Erde, Bündelung)</li>
+      <li>Umgebungstemperatur</li>
+    </ul>
+    <p>
+      Für H07RN‑F Kabel werden häufig empirische Werte von ca. 10–20 A pro mm² Leitungsquerschnitt angesetzt. Beispielsweise kann ein H07RN‑F Kabel mit 2,5 mm² Querschnitt je nach Bedingungen ca. 25–50 A führen. Bei Kabeln wie Han16, die in der Regel einen größeren Leiterquerschnitt (z. B. 16 mm²) haben, liegt die Belastbarkeit deutlich höher.
+    </p>
+    <p style="text-align: center; font-size: 1.2em;">
+      \( I_{\text{max}} = A \times k \)
+    </p>
+    <p>
+      Dabei ist \( A \) der Leiterquerschnitt in mm² und \( k \) ein empirisch ermittelter Faktor (A/mm²), der je nach Kabeltyp und Verlegeart variiert.
+    </p>
+    <p>
+      <strong>Beispiele:</strong><br>
+      Für ein H07RN‑F Kabel mit 2,5 mm² und einem Faktor von 12 A/mm²: <br>
+      \( I_{\text{max}} = 2,5 \, \text{mm}^2 \times 12 \, \text{A/mm}^2 = 30 \, \text{A} \)<br>
+      Für ein Han16 Kabel (16 mm²) bei einem Faktor von 10 A/mm²: <br>
+      \( I_{\text{max}} = 16 \, \text{mm}^2 \times 10 \, \text{A/mm}^2 = 160 \, \text{A} \)
+    </p>
+  </section>
+</main>
+</body>
+</html>
