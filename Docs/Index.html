@@ -1,1 +1,536 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lern-Webseite: Energietechnik</title>
+   <style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        background: #121212; /* Dunkler Hintergrund */
+        color: #e0e0e0; /* Helle Schriftfarbe */
+    }
+    header {
+        background: #1e1e1e; /* Dunkler Header-Hintergrund */
+        padding: 20px;
+        text-align: center;
+        color: #ffffff; /* Weiße Schriftfarbe im Header */
+    }
+    .navigation {
+        text-align: center;
+        margin: 20px;
+    }
+    .navigation button {
+        margin: 0 10px;
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        border: 1px solid #333; /* Dunkler Rahmen */
+        border-radius: 5px;
+        background: #2a2a2a; /* Dunkles Grau als Hintergrund */
+        color: #ffffff; /* Weiße Schrift */
+        transition: background 0.3s;
+    }
+    .navigation button:hover {
+        background: #444; /* Etwas helleres Grau beim Hover */
+    }
+    section {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #333; /* Dunkler Rahmen */
+        border-radius: 5px;
+        background: #1e1e1e; /* Dunkler Abschnitt-Hintergrund */
+        color: #e0e0e0; /* Helle Schriftfarbe */
+    }
+    h1, h2, h3 {
+        color: #ffffff; /* Weiße Schriftfarbe */
+    }
+    h2 {
+        border-bottom: 2px solid #444; /* Dunklerer Border */
+        padding-bottom: 5px;
+    }
+    .side-navigation {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: 200px;
+  max-height: 90vh;  /* Maximale Höhe auf 90% der Viewport-Höhe */
+  overflow-y: auto;  /* Aktiviert vertikales Scrollen innerhalb der Sidebar */
+  padding: 10px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .side-navigation button {
+        display: block; 
+        margin: 5px 0; 
+        padding: 10px; 
+        font-size: 14px;
+        cursor: pointer;
+        border: 1px solid #333; /* Dunkler Rahmen */
+        border-radius: 3px;
+        background: #2a2a2a; /* Dunkles Grau */
+        color: #ffffff; /* Weiße Schrift */
+        transition: background 0.3s;
+    }
 
+    .side-navigation button:hover {
+        background: #444; /* Helleres Grau beim Hover */
+    }
+	    .info-box {
+      position: absolute;
+      background: white;
+      padding: 10px;
+      border: 1px solid black;
+      border-radius: 5px;
+      display: none;
+    }
+	  .dropdown {
+    margin: 20px 0;
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-btn {
+    padding: 10px 15px;
+    background: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .dropdown-btn:hover {
+    background: #0056b3;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+  }
+
+  .dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #eee;
+  }
+
+  .dropdown-content a:last-child {
+    border-bottom: none;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #f1f1f1;
+  }
+  #ausloeseKurve svg {
+    display: block;
+    margin: 0 auto;
+}
+/* Deine aktuelle Seitenleiste */
+.side-navigation {
+  position: fixed;
+  top: 11px;
+  left: 10px;
+  width: 200px;
+  padding: 10px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  z-index: 999;
+}
+
+/* Main-Inhalt nach rechts verschieben, Platz für Seitenleiste */
+main {
+  margin-left: 230px; /* Platz für Seitenleiste auf großen Bildschirmen */
+}
+
+/* Mobilansicht: Seitenleiste wird horizontal am oberen Rand fixiert */
+@media (max-width: 768px) {
+  .side-navigation {
+    position: relative;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    box-shadow: none;
+    border-radius: 0;
+  }
+
+  .side-navigation button {
+    margin: 5px;
+    flex: 1 1 auto;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  /* Der Hauptinhalt hat keinen linken Rand mehr */
+  main {
+    margin-left: 0;
+    padding-top: 10px;
+  }
+}
+/* Standard-Layout für große Bildschirme */
+.side-navigation {
+  position: fixed;       /* links fixiert */
+  top: 10px;
+  left: 10px;
+  width: 200px;
+  padding: 10px;
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  z-index: 999;          /* damit sie über dem Inhalt bleibt */
+}
+
+/* Damit der Inhalt nicht überlagert wird */
+main {
+  margin-left: 230px; /* Platz für die Seitenleiste */
+}
+
+/* Buttons in der Navi */
+.side-navigation button {
+  display: block;
+  width: 100%;
+  margin: 5px 0;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #333;
+  border-radius: 3px;
+  background: #2a2a2a;
+  color: #ffffff;
+  transition: background 0.3s;
+}
+
+.side-navigation button:hover {
+  background: #444;
+}
+
+/* ---- MEDIA QUERY für kleine Bildschirme (z.B. max-width: 768px) ---- */
+@media (max-width: 768px) {
+
+  /* Navi wandert oben hin und bleibt fixiert */
+  .side-navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0;
+  }
+
+  /* Buttons jetzt nebeneinander/flexibel */
+  .side-navigation button {
+    margin: 5px;
+    width: auto;   /* flexibler */
+    flex: 1 1 auto;
+    font-size: 12px;
+  }
+
+  /* Damit der Hauptinhalt nicht hinter der fixen Navi verschwindet */
+  main {
+    margin-left: 0;       /* Kein Platz mehr an der Seite nötig */
+    margin-top: 70px;     /* Platz unter der fixierten Navi */
+    padding: 0 10px;      /* Kleiner Seitenabstand */
+  }
+}
+/* Standard: Für schmalere Bildschirme (z.B. Smartphones im Hochformat) */
+@media (max-width: 600px) {
+  /* Mobile Layout-Anpassungen */
+}
+
+/* Für Querformat (falls der Bildschirm breiter wird) */
+@media (orientation: landscape) and (max-width: 800px) {
+  /* Anpassungen speziell für Querformat auf kleineren Geräten */
+}
+
+</style>
+<script>
+	  if (screen.orientation && screen.orientation.lock) {
+  screen.orientation.lock('portrait').catch(function(error) {
+    console.error('Orientation lock failed: ', error);
+  });
+}
+</script>
+	  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	  <script src="https://d3js.org/d3.v6.min.js"></script>
+	  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeigerdiagramm</title>
+</head>
+<body>
+<script>
+  function checkOrientationAlert() {
+    // Wenn die Fensterbreite kleiner ist als die Höhe → Portraitmodus
+    if(window.innerWidth < window.innerHeight) {
+      alert("Für die beste Darstellung empfehlen wir, Ihr Gerät in den Querformat zu drehen.");
+    }
+  }
+
+  // Beim Laden, bei Resize und bei Orientierungswechsel prüfen
+  window.addEventListener("load", checkOrientationAlert);
+  window.addEventListener("resize", checkOrientationAlert);
+  window.addEventListener("orientationchange", checkOrientationAlert);
+</script>
+  <div class="side-navigation">
+    <!-- Navigationseinträge -->
+    <button onclick="document.getElementById('section1').scrollIntoView()">Übergabepunkten</button>
+    <button onclick="document.getElementById('unterverteilung').scrollIntoView()">Unterverteilung</button>
+    <button onclick="document.getElementById('section2').scrollIntoView()">Netzformen</button>
+    <button onclick="document.getElementById('section3').scrollIntoView()">Energieversorgung</button>
+    <button onclick="document.getElementById('section4').scrollIntoView()">Dreiphasenwechselspannung</button>
+    <button onclick="document.getElementById('section5').scrollIntoView()">RCD</button>
+    <button onclick="document.getElementById('ueberstrom-schutzeinrichtungen').scrollIntoView()">Überstrom-Schutzeinrichtungen</button>
+    <button onclick="document.getElementById('spannungsfall').scrollIntoView()">Spannungsfall</button>
+  </div>
+<main>
+    <header>
+        <h1>Willkommen zu meiner Lern-Webseite</h1>
+    </header>
+    <section id="section1">
+        <h2>1. Definition und Funktion von Übergabepunkten</h2>
+        <p>Ein Übergabepunkt ist die Schnittstelle, bei der die Verantwortung für die elektrische Anlage wechselt...</p>
+        <h2>1. Definition und Funktion von Übergabepunkten</h2>
+    <p><strong>Übergabepunkt:</strong> Ein Übergabepunkt ist eine physische und elektrische Schnittstelle, bei der die Verantwortung für die elektrische Anlage wechselt.</p>
+    <ul>
+        <li>Versorgungsnetz → Veranstaltungsnetz: Übergabe erfolgt oft von einem öffentlichen Netzbetreiber oder einem Gebäudeanschluss an die temporäre Veranstaltungstechnik.</li>
+        <li>Generator → Verteiler: In mobilen Szenarien kann der Übergabepunkt auch die Einspeisung eines Notstromaggregats in eine mobile Verteileranlage sein.</li>
+        <li>Hausanschlusskasten (HAK) oder Einspeisekasten: Typische Übergabestellen in Gebäuden.</li>
+    </ul>
+    <p><strong>Hauptaufgaben des Übergabepunktes:</strong></p>
+    <ul>
+        <li>Trennung der Netzformen (z. B. TN-C-Netz des Versorgers in TN-S-Netz der Veranstaltung).</li>
+        <li>Absicherung gegen Überlastung, Kurzschluss und Fehlerströme.</li>
+        <li>Bereitstellung normgerechter Anschlüsse (z. B. CEE, Powerlock) zur Weiterverteilung.</li>
+    </ul>
+	 <p>
+            Energieversorgung bezeichnet den Prozess der Bereitstellung elektrischer Energie durch ein Netz von Erzeugern, Leitungen und Verteilersystemen. Ziel ist es, den Energiebedarf von Haushalten, Unternehmen und öffentlichen Einrichtungen zuverlässig und sicher zu decken.
+        </p>
+    </section>
+    <section>
+        <h2>Arten der Energieversorgung</h2>
+        <ul>
+            <li><strong>Primärenergieversorgung:</strong> Gewinnung von Energie aus natürlichen Quellen wie Kohle, Erdgas, Wasser, Wind und Sonne.</li>
+            <li><strong>Sekundärenergieversorgung:</strong> Umwandlung und Transport von Primärenergie zu verbraucherfreundlicheren Formen wie Strom, Heizwärme oder Treibstoff.</li>
+            <li><strong>Dezentrale Energieversorgung:</strong> Nutzung kleinerer, lokal angesiedelter Anlagen zur Energieerzeugung, wie Blockheizkraftwerke oder Photovoltaikanlagen.</li>
+            <li><strong>Zentrale Energieversorgung:</strong> Große Kraftwerke oder Netzverbunde, die Energie über ein weitreichendes Verteilungsnetz bereitstellen.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Wichtige Faktoren der Energieversorgung</h2>
+        <ul>
+            <li><strong>Zuverlässigkeit:</strong> Die Energieversorgung muss kontinuierlich und ohne Unterbrechung gewährleistet sein, um die Nachfrage jederzeit zu decken.</li>
+            <li><strong>Effizienz:</strong> Minimierung von Energieverlusten bei der Umwandlung, Speicherung und Übertragung, um Ressourcen zu schonen und Kosten zu senken.</li>
+            <li><strong>Nachhaltigkeit:</strong> Einsatz erneuerbarer Energien und umweltfreundlicher Technologien, um die Auswirkungen auf Klima und Umwelt zu reduzieren.</li>
+            <li><strong>Sicherheit:</strong> Schutz der Energieinfrastruktur vor technischen Ausfällen, Naturkatastrophen oder gezielten Angriffen.</li>
+        </ul>
+    </section>
+	<section id="messungen-uebergabepunkte">
+  <h2>Messungen bei Übergabepunkten</h2>
+  <p>
+    Übergabepunkte sind kritische Schnittstellen in elektrischen Anlagen, an denen Messungen durchgeführt werden, um den sicheren und zuverlässigen Betrieb zu gewährleisten. In diesem Abschnitt findest du eine Übersicht der wichtigsten Messverfahren und Normen.
+  </p>
+  
+  <h3>1. Spannungsmessung</h3>
+  <ul>
+    <li>
+      <strong>Netzspannung:</strong> Ermittlung der Betriebsspannung (z. B. 230 V einphasig, 400 V dreiphasig) gemäß DIN EN 60038.
+    </li>
+    <li>
+      <strong>Effektivwert (RMS):</strong> Berechnung des RMS-Werts zur Bewertung der tatsächlichen Spannung.
+    </li>
+  </ul>
+  
+  <h3>2. Strommessung</h3>
+  <ul>
+    <li>
+      <strong>Wirkstrom:</strong> Messung des Stromflusses zur Bestimmung der Wirkleistung.
+    </li>
+    <li>
+      <strong>Scheinstrom:</strong> Ermittlung des Stroms in Voltampere (VA) als Grundlage für weitere Leistungsberechnungen.
+    </li>
+    <li>
+      <strong>Fehlerstrom:</strong> Kontrolle von Differenzströmen, um den Schutz von Personen (FI-Schutz) sicherzustellen.
+    </li>
+  </ul>
+  
+  <h3>3. Isolationswiderstandsmessung</h3>
+  <ul>
+    <li>
+      <strong>Messverfahren:</strong> Durchführung von Messungen gemäß DIN VDE 0100-600, um die Integrität der Isolation zu überprüfen.
+    </li>
+    <li>
+      <strong>Prüfspannungen:</strong> Einsatz typischer Prüfspannungen (z. B. 500 V DC) zur Ermittlung des Isolationswiderstands.
+    </li>
+  </ul>
+  
+  <h3>4. Schutzleiterprüfung</h3>
+  <ul>
+    <li>
+      <strong>Widerstandsmessung:</strong> Kontrolle des Schutzleiterwiderstands (z. B. R<sub>PE</sub> ≤ 0,3 Ω) zur Sicherstellung der Erdung.
+    </li>
+    <li>
+      <strong>FI-Schutzmessung:</strong> Überprüfung der Funktion von Fehlerstromschutzschaltern.
+    </li>
+  </ul>
+  
+  <h3>5. Phasenfolgeprüfung</h3>
+  <ul>
+    <li>
+      <strong>Drehfeldprüfung:</strong> Sicherstellung der korrekten Phasenreihenfolge (Rechts- versus Linksdrehfeld) mittels Drehfeldprüfern.
+    </li>
+    <li>
+      <strong>Zeigerdiagramm:</strong> Visualisierung der 120°-Phasenverschiebung als gleichseitiges Dreieck.
+    </li>
+  </ul>
+  
+  <h3>Wichtige Normen</h3>
+  <ul>
+    <li><strong>DIN VDE 0100:</strong> Vorschriften für das Errichten von Niederspannungsanlagen.</li>
+    <li><strong>DIN EN 60038:</strong> Standardisierte Nennspannungen in elektrischen Anlagen.</li>
+    <li><strong>DIN VDE 0100-600:</strong> Anforderungen und Prüfverfahren zur Isolationswiderstandsmessung.</li>
+  </ul>
+  
+  <p>
+    Die regelmäßige Durchführung dieser Messungen ist entscheidend, um die Sicherheit und Zuverlässigkeit elektrischer Anlagen zu gewährleisten und alle geltenden Normen einzuhalten.
+  </p>
+</section>
+<section id="unterverteilung">
+  <h2>Unterverteilung</h2>
+  <p>
+    Die Unterverteilung ist ein zentraler Bestandteil elektrischer Anlagen. Sie dient der Weiterverteilung der Energie vom Hauptverteiler in verschiedene Stromkreise und sorgt dabei für eine sichere, übersichtliche und normgerechte Stromversorgung.
+  </p>
+  
+  <h3>1. Definition und Funktion</h3>
+  <ul>
+    <li><strong>Definition:</strong> Eine Unterverteilung (auch Zwischenverteiler genannt) ist ein elektrischer Schaltkasten, der den Strom von der Hauptverteilung in mehrere Teilkreise weiterleitet.</li>
+    <li><strong>Funktion:</strong> 
+      <ul>
+        <li>Verteilung der elektrischen Energie auf verschiedene Verbrauchergruppen.</li>
+        <li>Schutz der Stromkreise durch separate Absicherung und Fehlerstromschutzschalter.</li>
+        <li>Ermöglichung von Wartungs- und Erweiterungsarbeiten ohne Stilllegung der gesamten Anlage.</li>
+      </ul>
+    </li>
+  </ul>
+  
+  <h3>2. Planung und Dimensionierung</h3>
+  <ul>
+    <li><strong>Lastenverteilung:</strong> Sorgfältige Planung der zu erwartenden Lasten, um eine gleichmäßige Verteilung und Vermeidung von Überlastungen sicherzustellen.</li>
+    <li><strong>Leitungsdimensionierung:</strong> Auswahl des richtigen Kabelquerschnitts zur Minimierung von Spannungsabfällen und zur Gewährleistung der Sicherheit.</li>
+    <li><strong>Absicherung:</strong> Einsatz passender Schutzorgane (LS-Schalter, Sicherungen, FI-Schutzschalter) entsprechend den Belastungen der einzelnen Teilkreise.</li>
+  </ul>
+  
+  <h3>3. Schutzmaßnahmen</h3>
+  <ul>
+    <li><strong>Erdung:</strong> Die Unterverteilung muss fachgerecht geerdet werden, um im Fehlerfall einen sicheren Potentialausgleich zu gewährleisten.</li>
+    <li><strong>Fehlerstromschutz:</strong> Einsatz von FI-Schutzschaltern zur Erkennung und Abschaltung bei Fehlerströmen.</li>
+    <li><strong>Überspannungsschutz:</strong> Installation von Überspannungsableitern (SPD) zum Schutz empfindlicher Geräte.</li>
+  </ul>
+  
+  <h3>4. Normen und Vorschriften</h3>
+  <ul>
+    <li><strong>DIN VDE 0100:</strong> Vorschriften für das Errichten von Niederspannungsanlagen, einschließlich Unterverteilungen.</li>
+    <li><strong>DIN EN 60038:</strong> Standardisierte Nennspannungen in elektrischen Anlagen.</li>
+    <li><strong>DIN VDE 0100-410:</strong> Schutzmaßnahmen gegen elektrischen Schlag, die auch für Unterverteilungen gelten.</li>
+  </ul>
+  
+  <p>
+    Eine fachgerechte Planung und Installation der Unterverteilung ist essenziell, um den sicheren und zuverlässigen Betrieb der elektrischen Anlage zu gewährleisten. Regelmäßige Wartungen und Prüfungen unterstützen zusätzlich den langfristigen Betrieb.
+  </p>
+<section id="messungenUnterverteilung">
+  <h2>Messungen der Unterverteilung</h2>
+  <p>
+    Um den sicheren Betrieb der elektrischen Anlage zu gewährleisten, sind in der Unterverteilung regelmäßige Messungen und Prüfungen unerlässlich. Folgende Messverfahren kommen dabei typischerweise zum Einsatz:
+  </p>
+  
+  <h3>1. Spannungsmessungen</h3>
+  <ul>
+    <li>
+      <strong>Phase-zu-Neutral:</strong> 
+      Messung der Betriebsspannung (z. B. 230 V in einphasigen Systemen) zur Überprüfung der korrekten Versorgung.
+    </li>
+    <li>
+      <strong>Phase-zu-Phase:</strong>
+      In Drehstromsystemen wird die Außenleiterspannung gemessen (z. B. ca. 400 V in Europa).
+    </li>
+    <li>
+      <strong>Netzspannungsqualität:</strong>
+      Überprüfung auf Schwankungen, Unterbrechungen oder Oberwellen.
+    </li>
+  </ul>
+  
+  <h3>2. Strommessungen</h3>
+  <ul>
+    <li>
+      <strong>Laststrommessung:</strong>
+      Erfassung der Ströme in den einzelnen Stromkreisen, um Überlastungen zu vermeiden.
+    </li>
+    <li>
+      <strong>Einschaltstrommessung:</strong>
+      Messung des Einschaltstroms, um zu überprüfen, ob dieser innerhalb zulässiger Grenzen liegt.
+    </li>
+  </ul>
+  
+  <h3>3. Widerstandsmessungen</h3>
+  <ul>
+    <li>
+      <strong>Isolationswiderstand:</strong>
+      Überprüfung des Widerstands zwischen aktiven Leitern und Erde gemäß DIN VDE 0100-600, um eine ausreichende Isolation zu gewährleisten.
+    </li>
+    <li>
+      <strong>Schutzleiterwiderstand:</strong>
+      Messung des Erdungswiderstands, um einen sicheren Schutz vor elektrischen Schlägen zu garantieren.
+    </li>
+  </ul>
+  
+  <h3>4. Fehlerstrommessung</h3>
+  <ul>
+    <li>
+      <strong>FI-Schutzschalter (RCD) Test:</strong>
+      Überprüfung der Auslösefunktion, damit im Fehlerfall der Stromkreis schnell unterbrochen wird.
+    </li>
+  </ul>
+  
+  <h3>5. Spannungsfallmessungen</h3>
+  <ul>
+    <li>
+      <strong>Berechnung und Messung des Spannungsfalls:</strong>
+      Ermittlung des Spannungsabfalls über die Leitungen, um sicherzustellen, dass die Spannung am Verbraucher innerhalb der zulässigen Toleranzen liegt.
+    </li>
+  </ul>
+  
+  <p>
+    Alle Messergebnisse sollten dokumentiert und regelmäßig mit den zulässigen Grenzwerten verglichen werden, um die Betriebssicherheit und Effizienz der Unterverteilung sicherzustellen.
+  </p>
+</section>
+</section>	
+    <section id="section2">
+        <h2>2. Netzformen und deren Bedeutung</h2>
+        <p>Die wichtigsten Netzformen sind TN-C, TN-S, TT und IT...</p>
+		<h2>2. Netzformen und ihre Bedeutung am Übergabepunkt</h2>
+    <h3>TN-C-System:</h3>
+    <ul>
+        <li>Im öffentlichen Netz häufig verwendet. Neutralleiter (N) und Schutzleiter (PE) sind in der Zuleitung kombiniert (PEN-Leiter).</li>
+        <li>Übergabepunkt trennt PEN in N und PE, um im nachfolgenden TN-S-System potenzialfreie Erdung und Schutz zu gewährleisten.</li>
+        <li><strong>Berechnung des PEN-Querschn
