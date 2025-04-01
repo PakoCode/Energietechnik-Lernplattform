@@ -1443,6 +1443,60 @@ document.addEventListener('DOMContentLoaded', berechneNennstrom);
     \( \Delta U = \frac{\sqrt{3} \cdot 30 \cdot 32}{16 \cdot 56} \approx 2.32 \, \text{V} \)
   </p>
 </section>
+<section id="spannungsfall-leitfaehigkeit-calc">
+  <h2>Spannungsfall-Rechner mit elektrischer Leitfähigkeit</h2>
+  <p>Berechne den Spannungsfall \Delta U mit Hilfe der elektrischen Leitfähigkeit \lambda.</p>
+
+  <form id="lambdaCalcForm">
+    <label for="strom">Strom \( I \) (A):</label>
+    <input type="number" id="strom" step="any" required><br><br>
+
+    <label for="laenge">Leitungslänge \( l \) (m):</label>
+    <input type="number" id="laenge" step="any" required><br><br>
+
+    <label for="querschnitt">Leiterquerschnitt A (mm²):</label>
+    <input type="number" id="querschnitt" step="any" required><br><br>
+
+    <label for="leitfaehigkeit">Leitfähigkeit \lambda (S/mm²):</label>
+    <input type="number" id="leitfaehigkeit" step="any" value="56" required><br><br>
+
+    <label for="stromart">Stromart:</label>
+    <select id="stromart">
+      <option value="einphasig">Einphasig</option>
+      <option value="drehstrom">Drehstrom</option>
+    </select><br><br>
+
+    <button type="button" onclick="berechneLambda()">Berechnen</button>
+  </form>
+
+  <p id="lambdaErgebnis" style="font-weight: bold; margin-top: 10px;"></p>
+</section>
+
+<script>
+  function berechneLambda() {
+    const I = parseFloat(document.getElementById('strom').value);
+    const l = parseFloat(document.getElementById('laenge').value);
+    const A = parseFloat(document.getElementById('querschnitt').value);
+    const lambda = parseFloat(document.getElementById('leitfaehigkeit').value);
+    const stromart = document.getElementById('stromart').value;
+
+    if (isNaN(I) || isNaN(l) || isNaN(A) || isNaN(lambda) || A === 0 || lambda === 0) {
+      document.getElementById('lambdaErgebnis').textContent = "Bitte gültige Werte eingeben!";
+      return;
+    }
+
+    let deltaU = 0;
+
+    if (stromart === "einphasig") {
+      deltaU = (2 * l * I) / (A * lambda);
+    } else {
+      deltaU = (Math.sqrt(3) * l * I) / (A * lambda);
+    }
+
+    document.getElementById('lambdaErgebnis').innerHTML =
+      `Ermittelter Spannungsfall: <strong>${deltaU.toFixed(2)} V</strong>`;
+  }
+</script>
 <section id="spannungsfall">
   <h2>Spannungsfall in elektrischen Anlagen</h2>
   <p>
