@@ -1538,30 +1538,32 @@ document.addEventListener('DOMContentLoaded', berechneNennstrom);
 </section>
 <section id="spannungsfall-cosphi">
   <h2>Spannungsfall mit Leistungsfaktor \cos\varphi</h2>
-  <p>Der Spannungsfall in einem Stromkreis wird größer, wenn der Strom nicht in Phase zur Spannung läuft – z. B. bei Motoren oder Leuchtmitteln mit Vorschaltgeräten. Der Leistungsfaktor \cos\varphi beschreibt diesen Effekt.</p>
+  <p>
+    Der Spannungsfall in einem Stromkreis wird größer, wenn der Strom nicht in Phase zur Spannung läuft – z. B. bei Motoren oder Leuchtmitteln mit Vorschaltgeräten. Der Leistungsfaktor \cos\varphi beschreibt diesen Effekt.
+  </p>
 
   <h3>Einphasiger Wechselstrom:</h3>
   <p>
     Der Spannungsfall bei Wechselstrom mit Wirkleistung P, Spannung U, Leiterlänge l, spezifischem Widerstand \rho und Querschnitt A ergibt sich durch:
   </p>
   <p style="text-align: center;">
-    (\Delta U = \frac{2 \cdot \rho \cdot l \cdot P}{A \cdot U \cdot \cos\varphi})
+    \Delta U = \frac{2 \cdot \rho \cdot l \cdot P}{A \cdot U \cdot \cos\varphi}
   </p>
 
   <h3>Dreiphasiger Wechselstrom (Drehstrom):</h3>
   <p>Im Drehstromsystem kommt zusätzlich der Faktor \sqrt{3} hinzu:</p>
   <p style="text-align: center;">
-    (\Delta U = \frac{\sqrt{3} \cdot \rho \cdot l \cdot P}{A \cdot U \cdot \cos\varphi})
+    \Delta U = \frac{\sqrt{3} \cdot \rho \cdot l \cdot P}{A \cdot U \cdot \cos\varphi}
   </p>
 
   <h4>Erklärung der Größen:</h4>
   <ul>
-    <li>(\rho) = spezifischer Widerstand (z. B. Kupfer: 0,0178 Ω·mm²/m)</li>
-    <li>(l) = Leitungslänge in Metern (nur eine Richtung, Faktor 2 ist bereits in der Formel enthalten)</li>
-    <li>(A) = Leiterquerschnitt in mm²</li>
-    <li>(P) = Wirkleistung in Watt</li>
-    <li>(U) = Spannung in Volt (z. B. 230 V oder 400 V)</li>
-    <li>(\cos\varphi) = Leistungsfaktor (zwischen 0 und 1)</li>
+    <li>\rho = spezifischer Widerstand (z. B. Kupfer: 0,0178 Ω·mm²/m)</li>
+    <li>l = Leitungslänge in Metern (nur eine Richtung, Faktor 2 ist bereits in der Formel enthalten)</li>
+    <li>A = Leiterquerschnitt in mm²</li>
+    <li>P = Wirkleistung in Watt</li>
+    <li>U = Spannung in Volt (z. B. 230 V oder 400 V)</li>
+    <li>\cos\varphi = Leistungsfaktor (zwischen 0 und 1)</li>
   </ul>
 </section>
 <section id="kabelarten">
