@@ -1536,6 +1536,89 @@ document.addEventListener('DOMContentLoaded', berechneNennstrom);
     <li>Ein optimal dimensionierter Leiter trägt dazu bei, dass der Wirkungsgrad der gesamten Anlage möglichst hoch bleibt.</li>
   </ul>
 </section>
+<section id="spannungsfall-cosphi">
+  <h2>Spannungsfall-Berechnung bei Wechselstrom mit Leistungsfaktor (\cos \varphi)</h2>
+  <p>
+    In vielen Praxisfällen ist die Last nicht rein ohmsch, sondern induktiv oder kapazitiv (z. B. Motoren, Transformatoren, Vorschaltgeräte). 
+    Dadurch entsteht eine Phasenverschiebung zwischen Strom und Spannung, beschrieben durch den Leistungsfaktor 
+    \cos\varphi (englisch <em>Power Factor</em>).
+  </p>
+  
+  <h3>1. Einphasiger Wechselstrom (1&nbsp;AC)</h3>
+  <p>
+    Bei einer einphasigen Last mit Wirkleistung P (in Watt) und Nennspannung U (in Volt) ergibt sich 
+    der Laststrom I unter Berücksichtigung des Leistungsfaktors aus:
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    I = \frac{P}{U \cdot \cos\varphi}
+  </p>
+  <p>
+    Um den Spannungsfall \Delta U (in Volt) zu berechnen, kann man den Strom I in die übliche 
+    Spannungsfall-Formel einsetzen. Verwendet man die Widerstandsformel 
+    R = \frac{\rho \cdot l}{A} (wobei l die Leiterlänge und A der Querschnitt ist), 
+    erhält man:
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    \Delta U = I \cdot R \;=\; I \cdot \left(\frac{2 \cdot \rho \cdot l}{A}\right) 
+    \;=\; \frac{2 \,\rho \, l}{A} \;\cdot\; \frac{P}{U \,\cos\varphi}
+  </p>
+  <p>
+    Die <strong>2</strong> steht dabei dafür, dass man den Hin- und Rückleiter berücksichtigt (z. B. Phase und Neutralleiter). 
+    So lässt sich der Spannungsfall (z. B. in Volt) direkt aus der Leistung, dem Leiterwiderstand und dem Leistungsfaktor berechnen.
+  </p>
+  
+  <h3>2. Dreiphasiger Wechselstrom (3&nbsp;AC)</h3>
+  <p>
+    Bei Drehstrom (dreiphasig) mit Wirkleistung P (in Watt) und Außenleiterspannung 
+    U (z. B. 400&nbsp;V) ist der Laststrom:
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    I = \frac{P}{\sqrt{3} \cdot U \cdot \cos\varphi}
+  </p>
+  <p>
+    Wieder kann man den Widerstand pro Ader über \frac{\rho \cdot l}{A} ansetzen, 
+    wobei in vielen Formeln bei Drehstrom noch der Faktor \sqrt{3} auftaucht. 
+    Für den Spannungsfall ergibt sich oft die Faustformel:
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    \Delta U = I \cdot \left(\frac{2 \,\rho \, l}{A}\right) \;=\;
+    \frac{\sqrt{3} \,\rho \, l}{A} \;\cdot\; \frac{P}{U \,\cos\varphi} 
+    \quad (\text{für symmetrische Last, Außenleiter hin + zurück})
+  </p>
+  <p>
+    Auch hier gilt: 
+    <ul>
+      <li><strong>l</strong> ist die Länge einer einzelnen Ader (Phase),</li>
+      <li><strong>\rho</strong> der spezifische Widerstand (z. B. Kupfer mit ca. 0,0178&nbsp;Ω mm²/m),</li>
+      <li><strong>A</strong> der Leiterquerschnitt in mm²,</li>
+      <li><strong>\sqrt{3}</strong> für den dreiphasigen Bezug,</li>
+      <li><strong>2</strong> für Hin- und Rückleiter, falls neutraler Rückstrom relevant 
+        (oder wenn man jede Phase einzeln betrachtet).</li>
+    </ul>
+  </p>
+  
+  <h3>3. Wichtiges zur Praxis</h3>
+  <ul>
+    <li>
+      Der <strong>Leistungsfaktor \cos\varphi</strong> ist besonders wichtig, wenn Motoren 
+      oder Trafos (induktive Lasten) betrieben werden. Ein typischer Wert kann z. B. 0,8 oder 0,9 sein.
+    </li>
+    <li>
+      Bei <strong>rein ohmschen</strong> Verbrauchern (z. B. Heizwiderstände) wäre 
+      \cos\varphi = 1. Dann vereinfacht sich die Formel.
+    </li>
+    <li>
+      Wenn <strong>große Längen</strong> oder <strong>hohe Leistungen</strong> auftreten, kann 
+      der Spannungsfall schnell kritische Werte erreichen. Deshalb ist eine sorgfältige Auslegung 
+      (z. B. größerer Querschnitt) nötig.
+    </li>
+    <li>
+      <strong>Normen:</strong> Gemäß DIN&nbsp;VDE&nbsp;0100-520 und anderen Vorschriften ist 
+      der Spannungsfall für viele Anlagen auf <em>maximal 3–4 %</em> begrenzt, damit 
+      Verbraucher korrekt funktionieren.
+    </li>
+  </ul>
+</section>
 <section id="kabelarten">
   <h2>Kabelarten in der Veranstaltungstechnik</h2>
   <p>
