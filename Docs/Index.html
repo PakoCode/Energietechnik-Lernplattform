@@ -347,7 +347,6 @@ main {
         </ul>
     </section>
 	<section id="quiz-uebergabepunkt">
-<section id="quiz-uebergabepunkt">
   <h2>Quiz: Übergabepunkte</h2>
   <p id="frage"></p>
   <input type="text" id="antwort" placeholder="Antwort eingeben">
@@ -363,10 +362,17 @@ main {
     { frage: "Was passiert am Übergabepunkt mit dem PEN-Leiter im TN-C-System?", antwort: "Auftrennung" }
   ];
 
-  let aktuelleFrage;
+  let letzteFrageIndex = -1;
 
   function neueFrage() {
-    aktuelleFrage = fragen[Math.floor(Math.random() * fragen.length)];
+    let neuerIndex;
+    do {
+      neuerIndex = Math.floor(Math.random() * fragen.length);
+    } while (neuerIndex === letzteFrageIndex); // Nicht dieselbe Frage direkt nochmal
+
+    letzteFrageIndex = neuerIndex;
+    aktuelleFrage = fragen[neuerIndex];
+
     document.getElementById("frage").textContent = aktuelleFrage.frage;
     document.getElementById("antwort").value = "";
     document.getElementById("feedback").textContent = "";
@@ -375,17 +381,17 @@ main {
   function prüfeAntwort() {
     const eingabe = document.getElementById("antwort").value.trim().toLowerCase();
     const richtigeAntwort = aktuelleFrage.antwort.toLowerCase();
+
     const feedback = eingabe === richtigeAntwort
       ? "Richtig! Gut gemacht."
       : `Leider falsch. Die richtige Antwort wäre: ${aktuelleFrage.antwort}`;
-    
+
     document.getElementById("feedback").textContent = feedback;
 
-    // Nach kurzer Pause neue Frage
+    // Neue Frage nach 2 Sekunden laden
     setTimeout(neueFrage, 2000);
   }
 
-  // Starte mit der ersten Frage
   neueFrage();
 </script>
 	<section id="messungen-uebergabepunkte">
