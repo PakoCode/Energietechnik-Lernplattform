@@ -265,13 +265,13 @@ main {
 }
 
 </style>
-<script>
-	  if (screen.orientation && screen.orientation.lock) {
+ <script>
+	/*  if (screen.orientation && screen.orientation.lock) {
   screen.orientation.lock('portrait').catch(function(error) {
     console.error('Orientation lock failed: ', error);
   });
-}
-</script>
+} */
+</script> 
 	  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 	  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	  <script src="https://d3js.org/d3.v6.min.js"></script>
@@ -280,11 +280,11 @@ main {
     <title>Zeigerdiagramm</title>
 </head>
 <body>
-<script>
-  function checkOrientationAlert() {
+<script> 
+ // function checkOrientationAlert() {
     // Wenn die Fensterbreite kleiner ist als die Höhe → Portraitmodus
-    if(window.innerWidth < window.innerHeight) {
-      alert("Für die beste Darstellung empfehlen wir, Ihr Gerät in den Querformat zu drehen.");
+ //   if(window.innerWidth < window.innerHeight) {
+ //     alert("Für die beste Darstellung empfehlen wir, Ihr Gerät in den Querformat zu drehen.");
     }
   }
 
@@ -302,7 +302,7 @@ main {
     <button onclick="document.getElementById('section4').scrollIntoView()">Dreiphasenwechselspannung</button>
     <button onclick="document.getElementById('section5').scrollIntoView()">RCD</button>
     <button onclick="document.getElementById('ueberstrom-schutzeinrichtungen').scrollIntoView()">Überstrom-Schutzeinrichtungen</button>
-    <button onclick="document.getElementById('spannungsfall').scrollIntoView()">Spannungsfall</button>
+    <button onclick="document.getElementById('spannungsfall-leitfaehigkeit').scrollIntoView()">Spannungsfall</button>
   </div>
 <main>
     <header>
@@ -1400,8 +1400,105 @@ function berechneNennstrom() {
 document.addEventListener('DOMContentLoaded', berechneNennstrom);
 </script>
 </section>
+<section id="spannungsfall-leitfaehigkeit">
+  <h2>Spannungsfall mit elektrischer Leitfähigkeit \( \lambda \)</h2>
+
+  <p>
+    Die elektrische Leitfähigkeit \( \lambda \) (in S/mm²) ist der Kehrwert des spezifischen Widerstands \( \rho )\. 
+    Während \( \rho \) angibt, wie stark ein Material den Stromfluss hemmt, beschreibt \( \lambda )\, wie gut es ihn leitet.
+  </p>
+
+  <p style="text-align: center; font-size: 1.2em;">
+    \( \lambda = \frac{1}{\rho} \)
+  </p>
+
+  <p>
+    Kupfer hat z. B. eine Leitfähigkeit von etwa \( \lambda = 56 \, \text{S/mm}^2 \).<br>
+    Der Spannungsfall kann alternativ auch mit dieser Größe berechnet werden.
+  </p>
+
+  <h3>Formel für Einphasen-Wechselstrom:</h3>
+  <p style="text-align: center;">
+    \( \Delta U = \frac{2 \cdot l \cdot I}{A \cdot \lambda} \)
+  </p>
+
+  <h3>Formel für Dreiphasen-Wechselstrom:</h3>
+  <p style="text-align: center;">
+    \( \Delta U = \frac{\sqrt{3} \cdot l \cdot I}{A \cdot \lambda} \)
+  </p>
+
+  <h4>Erklärung der Größen:</h4>
+  <ul>
+    <li>\( l \): Leitungslänge in Metern (Hin- und Rückleiter oder effektiv bei Drehstrom)</li>
+    <li>\( I \): Strom in Ampere</li>
+    <li>\( A \): Leiterquerschnitt in mm²</li>
+    <li>\( \lambda \): elektrische Leitfähigkeit in S/mm²</li>
+  </ul>
+
+  <h3>Beispielrechnung (Drehstrom):</h3>
+  <p>
+    Gegeben: \( l = 30 \, \text{m}, \; I = 32 \, \text{A}, \; A = 16 \, \text{mm}^2, \; \lambda = 56 \, \text{S/mm}^2 \)
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    \( \Delta U = \frac{\sqrt{3} \cdot 30 \cdot 32}{16 \cdot 56} \approx 2.32 \, \text{V} \)
+  </p>
+</section>
+<section id="spannungsfall-leitfaehigkeit-calc">
+  <h2>Spannungsfall-Rechner mit elektrischer Leitfähigkeit</h2>
+  <p>Berechne den Spannungsfall \( \Delta U \) mit Hilfe der elektrischen Leitfähigkeit \lambda.</p>
+
+  <form id="lambdaCalcForm">
+    <label for="strom">Strom \( I \) (A):</label>
+    <input type="number" id="strom" step="any" required><br><br>
+
+    <label for="laenge">Leitungslänge \( l \) (m):</label>
+    <input type="number" id="laenge" step="any" required><br><br>
+
+    <label for="querschnitt">Leiterquerschnitt \( A \) (mm²):</label>
+    <input type="number" id="querschnitt" step="any" required><br><br>
+
+    <label for="leitfaehigkeit">Leitfähigkeit \( \lambda \) (S/mm²):</label>
+    <input type="number" id="leitfaehigkeit" step="any" value="56" required><br><br>
+
+    <label for="stromart">Stromart:</label>
+    <select id="stromart">
+      <option value="einphasig">Einphasig</option>
+      <option value="drehstrom">Drehstrom</option>
+    </select><br><br>
+
+    <button type="button" onclick="berechneLambda()">Berechnen</button>
+  </form>
+
+  <p id="lambdaErgebnis" style="font-weight: bold; margin-top: 10px;"></p>
+</section>
+
+<script>
+  function berechneLambda() {
+    const I = parseFloat(document.getElementById('strom').value);
+    const l = parseFloat(document.getElementById('laenge').value);
+    const A = parseFloat(document.getElementById('querschnitt').value);
+    const lambda = parseFloat(document.getElementById('leitfaehigkeit').value);
+    const stromart = document.getElementById('stromart').value;
+
+    if (isNaN(I) || isNaN(l) || isNaN(A) || isNaN(lambda) || A === 0 || lambda === 0) {
+      document.getElementById('lambdaErgebnis').textContent = "Bitte gültige Werte eingeben!";
+      return;
+    }
+
+    let deltaU = 0;
+
+    if (stromart === "einphasig") {
+      deltaU = (2 * l * I) / (A * lambda);
+    } else {
+      deltaU = (Math.sqrt(3) * l * I) / (A * lambda);
+    }
+
+    document.getElementById('lambdaErgebnis').innerHTML =
+      `Ermittelter Spannungsfall: <strong>${deltaU.toFixed(2)} V</strong>`;
+  }
+</script>
 <section id="spannungsfall">
-  <h2>Spannungsfall in elektrischen Anlagen</h2>
+  <h2>Spannungsfall mit spezifischer Widerstand </h2>
   <p>
     Der Spannungsfall beschreibt den Spannungsabfall entlang eines elektrischen Leiters aufgrund des Leiterwiderstands. Ein zu hoher Spannungsfall kann die Funktion von Geräten beeinträchtigen und zu ineffizientem Betrieb führen.
   </p>
@@ -1447,7 +1544,7 @@ document.addEventListener('DOMContentLoaded', berechneNennstrom);
   </ul>
 </section>
 <section id="spannungsfallCalculator">
-  <h2>Spannungsfall Calculator</h2>
+  <h2>Spannungsfall Calculator mit spezifischer Widerstand </h2>
   <p>Berechne den Spannungsfall entlang eines Leiters. Gib die folgenden Werte ein:</p>
   <form id="spannungsfallForm">
     <label for="length">Leiterlänge (L in m): </label>
