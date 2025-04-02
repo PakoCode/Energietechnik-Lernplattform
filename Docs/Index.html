@@ -356,12 +356,12 @@ main {
 </section>
 
 <script>
-  const fragen = [
-    { frage: "Wo befindet sich typischerweise der Übergabepunkt in einem Gebäude?", antwort: "Hausanschlusskasten" },
-    { frage: "Wie heißt der kombinierte Neutral- und Schutzleiter?", antwort: "PEN" },
-    { frage: "Was ist eine typische Aufgabe eines Übergabepunkts?", antwort: "Netztrennung" },
-    { frage: "Was passiert am Übergabepunkt mit dem PEN-Leiter?", antwort: "Trennung" }
-  ];
+const fragen = [
+  { frage: "Wo befindet sich typischerweise der Übergabepunkt in einem Gebäude?", antworten: ["hausanschlusskasten", "hak"] },
+  { frage: "Wie heißt der kombinierte Neutral- und Schutzleiter?", antworten: ["pen", "pen-leiter"] },
+  { frage: "Was ist eine typische Aufgabe eines Übergabepunkts?", antworten: ["netztrennung", "trennung", "netzübergabe"] },
+  { frage: "Was passiert am Übergabepunkt mit dem PEN-Leiter?", antworten: ["trennung", "aufteilung", "aufgetrennt"] }
+];
 
   const countdownZeit = 15; // Hier stellst du die Zeit ein
   let aktuelleFrage;
@@ -391,16 +391,16 @@ main {
     }, 1000);
   }
 
-  function prüfeAntwort() {
-    const nutzerAntwort = document.getElementById("antwortInput").value.trim().toLowerCase();
-    if (nutzerAntwort === aktuelleFrage.antwort.toLowerCase()) {
-      document.getElementById("feedback").textContent = "Richtig!";
-    } else {
-      document.getElementById("feedback").textContent = `Falsch. Richtig wäre: ${aktuelleFrage.antwort}`;
-    }
-    clearInterval(countdownInterval);
-    setTimeout(neueFrage, 2000);
+function prüfeAntwort() {
+  const nutzerAntwort = document.getElementById("antwortInput").value.trim().toLowerCase();
+  if (aktuelleFrage.antworten.includes(nutzerAntwort)) {
+    document.getElementById("feedback").textContent = "Richtig!";
+  } else {
+    document.getElementById("feedback").textContent = `Falsch. Eine richtige Antwort wäre: ${aktuelleFrage.antworten[0]}`;
   }
+  clearInterval(countdownInterval);
+  setTimeout(neueFrage, 2000);
+}
 
   neueFrage(); // Start mit erster Frage
 </script>
