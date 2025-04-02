@@ -346,76 +346,64 @@ main {
             <li><strong>Sicherheit:</strong> Schutz der Energieinfrastruktur vor technischen Ausfällen, Naturkatastrophen oder gezielten Angriffen.</li>
         </ul>
     </section>
-	<section id="quiz-uebergabepunkt">
-<section id="quiz-uebergabepunkt">
+	
+<section id="quiz-section">
   <h2>Quiz: Übergabepunkte</h2>
-  <p id="frage"></p>
-  <input type="text" id="antwort" placeholder="Antwort eingeben">
-  <button onclick="prüfeAntwort()">Prüfen</button>
+  <div id="frageContainer"></div>
+  <input type="text" id="antwortInput" placeholder="Deine Antwort">
+  <button onclick="prüfeAntwort()">Antwort prüfen</button>
   <p id="feedback"></p>
-  <p id="timer" style="font-weight: bold; color: orange;"></p>
+  <p id="timerAnzeige" style="font-weight: bold;"></p>
 </section>
 
 <script>
   const fragen = [
-    { frage: "Wie nennt man den Punkt, an dem die Verantwortung vom Energieversorger auf den Betreiber übergeht?", antwort: "Übergabepunkt" },
-    { frage: "Welcher Anschlusskasten ist häufig der Übergabepunkt im Gebäude?", antwort: "Hausanschlusskasten" },
-    { frage: "Was wird am Übergabepunkt typischerweise bereitgestellt? (z. B. CEE, Powerlock)", antwort: "Anschlüsse" },
-    { frage: "Was passiert am Übergabepunkt mit dem PEN-Leiter im TN-C-System?", antwort: "Auftrennung" }
+    { frage: "Wo befindet sich typischerweise der Übergabepunkt in einem Gebäude?", antwort: "Hausanschlusskasten" },
+    { frage: "Wie heißt der kombinierte Neutral- und Schutzleiter?", antwort: "PEN" },
+    { frage: "Was ist eine typische Aufgabe eines Übergabepunkts?", antwort: "Netztrennung" },
+    { frage: "Was passiert am Übergabepunkt mit dem PEN-Leiter?", antwort: "Trennung" }
   ];
 
-  let letzteFrageIndex = -1;
+  let countdownZeit = 5; // Sekunden anpassbar
   let aktuelleFrage;
   let countdownInterval;
-  let countdownZeit = 15;
 
   function neueFrage() {
-    let neuerIndex;
-    do {
-      neuerIndex = Math.floor(Math.random() * fragen.length);
-    } while (neuerIndex === letzteFrageIndex);
-
-    letzteFrageIndex = neuerIndex;
-    aktuelleFrage = fragen[neuerIndex];
-
-    document.getElementById("frage").textContent = aktuelleFrage.frage;
-    document.getElementById("antwort").value = "";
     document.getElementById("feedback").textContent = "";
-
-    starteCountdown();
+    aktuelleFrage = fragen[Math.floor(Math.random() * fragen.length)];
+    document.getElementById("frageContainer").textContent = aktuelleFrage.frage;
+    document.getElementById("antwortInput").value = "";
+    starteCountdown(countdownZeit);
   }
 
-  function prüfeAntwort() {
-    clearInterval(countdownInterval); // Timer stoppen
+  function starteCountdown(sekunden) {
+    clearInterval(countdownInterval); // alten Timer stoppen
+    let zeit = sekunden;
+    document.getElementById("timerAnzeige").textContent = `Zeit: ${zeit}s`;
 
-    const eingabe = document.getElementById("antwort").value.trim().toLowerCase();
-    const richtigeAntwort = aktuelleFrage.antwort.toLowerCase();
-
-    const feedback = eingabe === richtigeAntwort
-      ? "Richtig! Gut gemacht."
-      : `Leider falsch. Die richtige Antwort wäre: ${aktuelleFrage.antwort}`;
-
-    document.getElementById("feedback").textContent = feedback;
-
-    setTimeout(neueFrage, 2000); // Neue Frage nach Feedback
-  }
-
-  function starteCountdown() {
-    let zeit = countdownZeit;
-    document.getElementById("timer").textContent = `Zeit: ${zeit} Sekunden`;
-    
-    clearInterval(countdownInterval);
     countdownInterval = setInterval(() => {
       zeit--;
-      document.getElementById("timer").textContent = `Zeit: ${zeit} Sekunden`;
+      document.getElementById("timerAnzeige").textContent = `Zeit: ${zeit}s`;
       if (zeit <= 0) {
         clearInterval(countdownInterval);
-        prüfeAntwort(); // Wenn Zeit abgelaufen, automatisch prüfen
+        document.getElementById("feedback").textContent = "Zeit abgelaufen! Nächste Frage...";
+        setTimeout(neueFrage, 2000); // nach kurzer Pause nächste Frage
       }
     }, 1000);
   }
 
-  neueFrage();
+  function prüfeAntwort() {
+    const nutzerAntwort = document.getElementById("antwortInput").value.trim().toLowerCase();
+    if (nutzerAntwort === aktuelleFrage.antwort.toLowerCase()) {
+      document.getElementById("feedback").textContent = "Richtig!";
+    } else {
+      document.getElementById("feedback").textContent = `Falsch. Richtig wäre: ${aktuelleFrage.antwort}`;
+    }
+    clearInterval(countdownInterval);
+    setTimeout(neueFrage, 2000);
+  }
+
+  neueFrage(); // Starte mit erster Frage
 </script>
 	<section id="messungen-uebergabepunkte">
   <h2>Messungen bei Übergabepunkten</h2>
