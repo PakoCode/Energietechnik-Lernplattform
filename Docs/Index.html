@@ -346,6 +346,34 @@ main {
             <li><strong>Sicherheit:</strong> Schutz der Energieinfrastruktur vor technischen Ausfällen, Naturkatastrophen oder gezielten Angriffen.</li>
         </ul>
     </section>
+	<section id="quiz-uebergabepunkt">
+  <h2>Quiz: Übergabepunkte</h2>
+  <p id="frage"></p>
+  <input type="text" id="antwort" placeholder="Antwort eingeben">
+  <button onclick="prüfeAntwort()">Prüfen</button>
+  <p id="feedback"></p>
+</section>
+
+<script>
+  const fragen = [
+    { frage: "Wie nennt man den Punkt, an dem die Verantwortung vom Energieversorger auf den Betreiber übergeht?", antwort: "Übergabepunkt" },
+    { frage: "Welcher Anschlusskasten ist häufig der Übergabepunkt im Gebäude?", antwort: "Hausanschlusskasten" },
+    { frage: "Was wird am Übergabepunkt typischerweise bereitgestellt? (z. B. CEE, Powerlock)", antwort: "Anschlüsse" },
+    { frage: "Was passiert am Übergabepunkt mit dem PEN-Leiter im TN-C-System?", antwort: "Auftrennung" }
+  ];
+
+  const zufallsfrage = fragen[Math.floor(Math.random() * fragen.length)];
+  document.getElementById("frage").textContent = zufallsfrage.frage;
+
+  function prüfeAntwort() {
+    const eingabe = document.getElementById("antwort").value.trim().toLowerCase();
+    const richtigeAntwort = zufallsfrage.antwort.toLowerCase();
+    const feedback = eingabe === richtigeAntwort
+      ? "Richtig! Gut gemacht."
+      : `Leider falsch. Die richtige Antwort wäre: ${zufallsfrage.antwort}`;
+    document.getElementById("feedback").textContent = feedback;
+  }
+</script>
 	<section id="messungen-uebergabepunkte">
   <h2>Messungen bei Übergabepunkten</h2>
   <p>
