@@ -346,7 +346,6 @@ main {
             <li><strong>Sicherheit:</strong> Schutz der Energieinfrastruktur vor technischen Ausfällen, Naturkatastrophen oder gezielten Angriffen.</li>
         </ul>
     </section>
-	
 <section id="quiz-section">
   <h2>Quiz: Übergabepunkte</h2>
   <div id="frageContainer"></div>
@@ -364,7 +363,7 @@ main {
     { frage: "Was passiert am Übergabepunkt mit dem PEN-Leiter?", antwort: "Trennung" }
   ];
 
-  let countdownZeit = 15; // Sekunden anpassbar
+  const countdownZeit = 15; // Hier stellst du die Zeit ein
   let aktuelleFrage;
   let countdownInterval;
 
@@ -373,12 +372,12 @@ main {
     aktuelleFrage = fragen[Math.floor(Math.random() * fragen.length)];
     document.getElementById("frageContainer").textContent = aktuelleFrage.frage;
     document.getElementById("antwortInput").value = "";
-    starteCountdown(countdownZeit);
+    starteCountdown();
   }
 
-  function starteCountdown(sekunden) {
-    clearInterval(countdownInterval); // alten Timer stoppen
-    let zeit = sekunden;
+  function starteCountdown() {
+    clearInterval(countdownInterval);
+    let zeit = countdownZeit;
     document.getElementById("timerAnzeige").textContent = `Zeit: ${zeit}s`;
 
     countdownInterval = setInterval(() => {
@@ -387,7 +386,7 @@ main {
       if (zeit <= 0) {
         clearInterval(countdownInterval);
         document.getElementById("feedback").textContent = "Zeit abgelaufen! Nächste Frage...";
-        setTimeout(neueFrage, 4000); // nach kurzer Pause nächste Frage
+        setTimeout(neueFrage, 4000);
       }
     }, 1000);
   }
@@ -403,7 +402,7 @@ main {
     setTimeout(neueFrage, 2000);
   }
 
-  neueFrage(); // Starte mit erster Frage
+  neueFrage(); // Start mit erster Frage
 </script>
 	<section id="messungen-uebergabepunkte">
   <h2>Messungen bei Übergabepunkten</h2>
