@@ -347,11 +347,13 @@ main {
         </ul>
     </section>
 	<section id="quiz-uebergabepunkt">
+<section id="quiz-uebergabepunkt">
   <h2>Quiz: Übergabepunkte</h2>
   <p id="frage"></p>
   <input type="text" id="antwort" placeholder="Antwort eingeben">
   <button onclick="prüfeAntwort()">Prüfen</button>
   <p id="feedback"></p>
+  <p id="timer" style="font-weight: bold; color: orange;"></p>
 </section>
 
 <script>
@@ -363,12 +365,15 @@ main {
   ];
 
   let letzteFrageIndex = -1;
+  let aktuelleFrage;
+  let countdownInterval;
+  let countdownZeit = 5;
 
   function neueFrage() {
     let neuerIndex;
     do {
       neuerIndex = Math.floor(Math.random() * fragen.length);
-    } while (neuerIndex === letzteFrageIndex); // Nicht dieselbe Frage direkt nochmal
+    } while (neuerIndex === letzteFrageIndex);
 
     letzteFrageIndex = neuerIndex;
     aktuelleFrage = fragen[neuerIndex];
@@ -376,9 +381,13 @@ main {
     document.getElementById("frage").textContent = aktuelleFrage.frage;
     document.getElementById("antwort").value = "";
     document.getElementById("feedback").textContent = "";
+
+    starteCountdown();
   }
 
   function prüfeAntwort() {
+    clearInterval(countdownInterval); // Timer stoppen
+
     const eingabe = document.getElementById("antwort").value.trim().toLowerCase();
     const richtigeAntwort = aktuelleFrage.antwort.toLowerCase();
 
@@ -388,8 +397,22 @@ main {
 
     document.getElementById("feedback").textContent = feedback;
 
-    // Neue Frage nach 2 Sekunden laden
-    setTimeout(neueFrage, 2000);
+    setTimeout(neueFrage, 2000); // Neue Frage nach Feedback
+  }
+
+  function starteCountdown() {
+    let zeit = countdownZeit;
+    document.getElementById("timer").textContent = `Zeit: ${zeit} Sekunden`;
+    
+    clearInterval(countdownInterval);
+    countdownInterval = setInterval(() => {
+      zeit--;
+      document.getElementById("timer").textContent = `Zeit: ${zeit} Sekunden`;
+      if (zeit <= 0) {
+        clearInterval(countdownInterval);
+        prüfeAntwort(); // Wenn Zeit abgelaufen, automatisch prüfen
+      }
+    }, 1000);
   }
 
   neueFrage();
