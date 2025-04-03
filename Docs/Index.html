@@ -441,74 +441,79 @@ function prüfeAntwort() {
 
   neueFrage(); // Start mit erster Frage
 </script>
-	<section id="messungen-uebergabepunkte">
-  <h2>Messungen bei Übergabepunkten</h2>
+<section id="messungen-uebergabepunkt">
+  <h2>Messungen am Übergabepunkt</h2>
   <p>
-    Übergabepunkte sind kritische Schnittstellen in elektrischen Anlagen, an denen Messungen durchgeführt werden, um den sicheren und zuverlässigen Betrieb zu gewährleisten. In diesem Abschnitt findest du eine Übersicht der wichtigsten Messverfahren und Normen.
+    Am Übergabepunkt einer elektrischen Anlage sind verschiedene Messungen durchzuführen, um die Sicherheit und Funktionstüchtigkeit der Anlage zu gewährleisten. Diese Messungen sind Teil der Erstprüfung gemäß DIN VDE 0100-600 sowie der wiederkehrenden Prüfungen nach DGUV Vorschrift 3.
   </p>
-  
-  <h3>1. Spannungsmessung</h3>
+
+  <h3>Wichtige Messgrößen & Bedeutung</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Messgröße</th>
+        <th>Einheit</th>
+        <th>Typischer Messpunkt</th>
+        <th>Normbereich</th>
+        <th>Bedeutung</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Schleifenimpedanz \( Z_s \)</td>
+        <td>Ω (Ohm)</td>
+        <td>PE zu L am letzten Verbraucher</td>
+        <td>\( &lt; 1\,\Omega )\ je nach Leitungslänge</td>
+        <td>Nachweis der Abschaltbedingungen (z. B. durch LS-Schalter oder RCD)</td>
+      </tr>
+      <tr>
+        <td>Isolationswiderstand</td>
+        <td>MΩ</td>
+        <td>Zwischen aktiven Leitern und PE</td>
+        <td>\( &gt; 1\,\text{M}\Omega \) (gem. DIN VDE 0100-600)</td>
+        <td>Schutz gegen elektrischen Schlag, keine Isolationsfehler</td>
+      </tr>
+      <tr>
+        <td>Spannung U</td>
+        <td>V (Volt)</td>
+        <td>L1–N, L2–N, L3–N, L1–L2 usw.</td>
+        <td>230 V (L–N) / 400 V (L–L)</td>
+        <td>Überprüfung der Netzspannung und Symmetrie</td>
+      </tr>
+      <tr>
+        <td>Fehlerstrom \( I_\Delta \)</td>
+        <td>mA</td>
+        <td>Am RCD-Prüfpunkt</td>
+        <td>\( &lt; 30\,\text{mA} \) für Personenschutz</td>
+        <td>Test der Schutzfunktion durch RCDs</td>
+      </tr>
+      <tr>
+        <td>Kurzschlussstrom \( I_k \)</td>
+        <td>A</td>
+        <td>Verteiler, Übergabepunkt</td>
+        <td>je nach Netzform (z. B. 500 A bis 5 kA)</td>
+        <td>Nachweis, ob die Schutzeinrichtung im Fehlerfall sicher abschaltet</td>
+      </tr>
+      <tr>
+        <td>Durchgängigkeit</td>
+        <td>Ω</td>
+        <td>Schutzleiterverbindungen</td>
+        <td>&lt; 1 Ω</td>
+        <td>Sicherstellung einer niederohmigen Schutzleiterverbindung</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Wo wird gemessen?</h3>
   <ul>
-    <li>
-      <strong>Netzspannung:</strong> Ermittlung der Betriebsspannung (z. B. 230 V einphasig, 400 V dreiphasig) gemäß DIN EN 60038.
-    </li>
-    <li>
-      <strong>Effektivwert (RMS):</strong> Berechnung des RMS-Werts zur Bewertung der tatsächlichen Spannung.
-    </li>
+    <li><strong>Vor dem Übergabepunkt:</strong> Spannungen und Kurzschlussstrom – zum Abgleich mit Netzbetreiberdaten.</li>
+    <li><strong>Im Verteiler:</strong> Schleifenimpedanz, Isolationswiderstand, Fehlerstromauslösung (RCD-Test).</li>
+    <li><strong>Am letzten Verbraucher:</strong> Schleifenimpedanz und Spannung – wichtig für Abschaltbedingungen.</li>
   </ul>
-  
-  <h3>2. Strommessung</h3>
-  <ul>
-    <li>
-      <strong>Wirkstrom:</strong> Messung des Stromflusses zur Bestimmung der Wirkleistung.
-    </li>
-    <li>
-      <strong>Scheinstrom:</strong> Ermittlung des Stroms in Voltampere (VA) als Grundlage für weitere Leistungsberechnungen.
-    </li>
-    <li>
-      <strong>Fehlerstrom:</strong> Kontrolle von Differenzströmen, um den Schutz von Personen (FI-Schutz) sicherzustellen.
-    </li>
-  </ul>
-  
-  <h3>3. Isolationswiderstandsmessung</h3>
-  <ul>
-    <li>
-      <strong>Messverfahren:</strong> Durchführung von Messungen gemäß DIN VDE 0100-600, um die Integrität der Isolation zu überprüfen.
-    </li>
-    <li>
-      <strong>Prüfspannungen:</strong> Einsatz typischer Prüfspannungen (z. B. 500 V DC) zur Ermittlung des Isolationswiderstands.
-    </li>
-  </ul>
-  
-  <h3>4. Schutzleiterprüfung</h3>
-  <ul>
-    <li>
-      <strong>Widerstandsmessung:</strong> Kontrolle des Schutzleiterwiderstands (z. B. R<sub>PE</sub> ≤ 0,3 Ω) zur Sicherstellung der Erdung.
-    </li>
-    <li>
-      <strong>FI-Schutzmessung:</strong> Überprüfung der Funktion von Fehlerstromschutzschaltern.
-    </li>
-  </ul>
-  
-  <h3>5. Phasenfolgeprüfung</h3>
-  <ul>
-    <li>
-      <strong>Drehfeldprüfung:</strong> Sicherstellung der korrekten Phasenreihenfolge (Rechts- versus Linksdrehfeld) mittels Drehfeldprüfern.
-    </li>
-    <li>
-      <strong>Zeigerdiagramm:</strong> Visualisierung der 120°-Phasenverschiebung als gleichseitiges Dreieck.
-    </li>
-  </ul>
-  
-  <h3>Wichtige Normen</h3>
-  <ul>
-    <li><strong>DIN VDE 0100:</strong> Vorschriften für das Errichten von Niederspannungsanlagen.</li>
-    <li><strong>DIN EN 60038:</strong> Standardisierte Nennspannungen in elektrischen Anlagen.</li>
-    <li><strong>DIN VDE 0100-600:</strong> Anforderungen und Prüfverfahren zur Isolationswiderstandsmessung.</li>
-  </ul>
-  
+
+  <h3>Wozu dienen die Messungen?</h3>
   <p>
-    Die regelmäßige Durchführung dieser Messungen ist entscheidend, um die Sicherheit und Zuverlässigkeit elektrischer Anlagen zu gewährleisten und alle geltenden Normen einzuhalten.
+    Diese Messungen dienen dem Nachweis der Schutzmaßnahmen wie automatische Abschaltung im Fehlerfall, Schutz durch Isolierung, ausreichende Spannungsversorgung und Funktionsfähigkeit von Schutzeinrichtungen. Sie sind Grundlage für das Prüfprotokoll und die Freigabe der Anlage.
   </p>
 </section>
 <section id="unterverteilung">
