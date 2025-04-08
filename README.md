@@ -23,6 +23,6 @@ Eine interaktive Lern-Webseite für Fachkräfte in der Veranstaltungstechnik und
 1. Repository klonen:
    ```bash
    git clone https://github.com/PakoCode/Pako.git
-2. Seite
+## Web-Seite
    ```bash
    https://pakocode.github.io/Energietechnik-Lernplattform/
