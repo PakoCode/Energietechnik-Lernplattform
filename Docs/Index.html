@@ -1575,7 +1575,77 @@ document.addEventListener('DOMContentLoaded', berechneNennstrom);
       ],
       korrekt: 1
     }
-  ];
+ {
+    frage: "Ein Verlängerungskabel liegt in einer Pfütze. Im Inneren gibt es einen Isolationsfehler zwischen Außenleiter und PE. Was passiert?",
+    antworten: [
+      "Der Leitungsschutzschalter löst sofort aus.",
+      "Der RCD erkennt den Fehlerstrom und unterbricht den Stromkreis.",
+      "Es entsteht kein Stromfluss, da Wasser nicht leitet.",
+      "Der Schutzleiter schmilzt."
+    ],
+    korrekt: 1
+  },
+  {
+    frage: "Ein Baustrahler hat einen Isolationsfehler, aber es ist kein Schutzleiter angeschlossen. Was passiert im Fehlerfall?",
+    antworten: [
+      "Der Stromkreis bleibt geschlossen – es besteht Lebensgefahr!",
+      "Der RCD löst trotzdem zuverlässig aus.",
+      "Der LS-Schalter übernimmt den Schutz.",
+      "Die Spannung bricht zusammen."
+    ],
+    korrekt: 0
+  },
+  {
+    frage: "Ein TN-C-Netz wird über einen Übergabepunkt in ein TN-S-Netz getrennt. Was passiert bei einem unterbrochenen PEN-Leiter vor der Trennung?",
+    antworten: [
+      "Alle Verbraucher schalten sich ab.",
+      "Es liegt keine Gefahr vor – Schutzleiter ist aktiv.",
+      "Gehäuse können unter Spannung stehen – Lebensgefahr!",
+      "Der RCD löst korrekt aus."
+    ],
+    korrekt: 2
+  },
+  {
+    frage: "Bei einer Messung nach DIN VDE 0100-600 wird der RCD mit dem Prüfgerät ausgelöst. Was ist das Ziel dieser Prüfung?",
+    antworten: [
+      "Um den Leitungsschutzschalter zu prüfen.",
+      "Um den Fehlerstrom zu simulieren und Auslösung zu überprüfen.",
+      "Um den Spannungsfall zu messen.",
+      "Um das Netz auf Isolationsfehler zu testen."
+    ],
+    korrekt: 1
+  },
+  {
+    frage: "Warum darf bei einem TT-System der RCD niemals fehlen?",
+    antworten: [
+      "Weil dort keine Sicherungen vorhanden sind.",
+      "Weil der Schutzleiter direkt mit dem Außenleiter verbunden ist.",
+      "Weil der Erdungswiderstand allein keinen ausreichenden Schutz bietet.",
+      "Weil Spannungsschwankungen im TT-System gefährlich sind."
+    ],
+    korrekt: 2
+  },
+  {
+    frage: "Ein Stromgenerator versorgt eine Bühne, aber der PE ist nicht mit der Erdung verbunden. Was ist die Folge?",
+    antworten: [
+      "Der RCD löst schneller aus.",
+      "Es besteht kein Schutz im Fehlerfall – gefährlich!",
+      "Der Generator schaltet automatisch ab.",
+      "Das hat keine Auswirkungen auf den Schutz."
+    ],
+    korrekt: 1
+  },
+  {
+    frage: "Ein Typ B RCD wird eingesetzt. Welche Art von Fehlerströmen kann er zusätzlich erkennen?",
+    antworten: [
+      "Nur sinusförmige Wechselströme.",
+      "Nur pulsierende Gleichfehlerströme.",
+      "Auch glatte Gleichfehlerströme von Frequenzumrichtern.",
+      "Nur Ströme < 30 mA."
+    ],
+    korrekt: 2
+  }
+];
 
   let aktuellesSzenario = 0;
 
