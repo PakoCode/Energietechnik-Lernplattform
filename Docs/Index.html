@@ -692,6 +692,92 @@ function prüfeAntwort() {
         </tbody>
     </table>
 </section>
+<section id="stern-dreieckschaltung">
+  <h2>Stern- und Dreieckschaltung</h2>
+
+  <p>
+    In der Elektrotechnik werden bei Drehstromsystemen häufig zwei unterschiedliche Schaltungsarten verwendet: die <strong>Sternschaltung (Y)</strong> und die <strong>Dreieckschaltung (Δ)</strong>.
+    Beide haben unterschiedliche Eigenschaften und werden je nach Anwendung eingesetzt – insbesondere bei Motoren oder Transformatoren.
+  </p>
+
+  <h3>1. Sternschaltung (Y-Schaltung)</h3>
+  <p>
+    Bei der Sternschaltung sind alle drei Phasen an einem gemeinsamen Mittelpunkt (Sternpunkt) verbunden. Der Sternpunkt kann geerdet oder mit einem Neutralleiter verbunden sein.
+  </p>
+  <ul>
+    <li>Die Spannung zwischen Phase und Neutralleiter (Strangspannung) ist kleiner als die Spannung zwischen den Außenleitern (Leiterspannung).</li>
+    <li>Formel: <strong>U<sub>Strang</sub> = U<sub>Leiter</sub> / √3</strong></li>
+    <li>Typisch für lange Leitungswege oder Verbraucher mit niedriger Leistungsaufnahme.</li>
+  </ul>
+
+  <h4>Vorteile:</h4>
+  <ul>
+    <li>Neutralleiteranschluss möglich</li>
+    <li>Geringere Spannung an den einzelnen Verbrauchern</li>
+    <li>Geringere Einschaltströme bei Motoren (Sanftanlauf)</li>
+  </ul>
+
+  <h3>2. Dreieckschaltung (Δ-Schaltung)</h3>
+  <p>
+    Bei der Dreieckschaltung sind die Phasenenden der Wicklungen kreisförmig miteinander verbunden. Es entsteht kein Neutralleiter.
+  </p>
+  <ul>
+    <li>Die Strangspannung entspricht der Leiterspannung.</li>
+    <li>Formel: <strong>U<sub>Strang</sub> = U<sub>Leiter</sub></strong></li>
+    <li>Höhere Stromaufnahme, wird bei hoher Leistung und im Betriebszustand verwendet.</li>
+  </ul>
+
+  <h4>Vorteile:</h4>
+  <ul>
+    <li>Mehr Leistung bei gleichem Motor</li>
+    <li>Bessere Ausnutzung der Wicklungen</li>
+    <li>Kein Neutralleiter nötig</li>
+  </ul>
+
+  <h3>3. Vergleichstabelle</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Eigenschaft</th>
+        <th>Sternschaltung (Y)</th>
+        <th>Dreieckschaltung (Δ)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Spannung am Strang</td>
+        <td>U<sub>Strang</sub> = U<sub>Leiter</sub> / √3</td>
+        <td>U<sub>Strang</sub> = U<sub>Leiter</sub></td>
+      </tr>
+      <tr>
+        <td>Strom am Strang</td>
+        <td>I<sub>Strang</sub> = I<sub>Leiter</sub></td>
+        <td>I<sub>Strang</sub> = I<sub>Leiter</sub> / √3</td>
+      </tr>
+      <tr>
+        <td>Leistungsaufnahme</td>
+        <td>Geringer</td>
+        <td>Höher</td>
+      </tr>
+      <tr>
+        <td>Neutralleiter</td>
+        <td>Möglich</td>
+        <td>Nicht vorhanden</td>
+      </tr>
+      <tr>
+        <td>Typische Anwendung</td>
+        <td>Motorstart, Leuchten</td>
+        <td>Betrieb von Motoren, Heizungen</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>4. Stern-Dreieck-Anlauf bei Motoren</h3>
+  <p>
+    Drehstrommotoren werden häufig beim Einschalten zunächst in Sternschaltung betrieben, um den Anlaufstrom zu begrenzen.
+    Nach dem Hochlauf (ca. 5–10 Sekunden) wird automatisch in Dreieckschaltung umgeschaltet, um die volle Leistung bereitzustellen.
+  </p>
+</section>
 
     <h2>3. Leistungen und Bemessung am Übergabepunkt</h2>
     <h3>Leistungsbedarf:</h3>
