@@ -1536,6 +1536,90 @@ function berechneNennstrom() {
 // Automatische Erstberechnung beim Laden der Seite
 document.addEventListener('DOMContentLoaded', berechneNennstrom);
 </script>
+<section id="fehlerstrom-quiz">
+  <h2>Fehlerstrom-Szenarien erkennen</h2>
+  <div id="szenarioText"></div>
+  <div id="antwortenContainer"></div>
+  <p id="quizFeedback" style="font-weight: bold;"></p>
+  <button onclick="naechstesSzenario()">Nächstes Szenario</button>
+</section>
+<script>
+  const szenarien = [
+    {
+      frage: "Ein Gerät hat einen Metallrahmen und ist über ein defektes Kabel angeschlossen – der Schutzleiter ist unterbrochen. Was passiert beim Fehlerstrom?",
+      antworten: [
+        "Der RCD löst nicht aus – Gefahr eines Stromschlags!",
+        "Der Leitungsschutzschalter löst sofort aus.",
+        "Nichts passiert, weil der Außenleiter unterbrochen wurde.",
+        "Die Spannung sinkt auf 0 V."
+      ],
+      korrekt: 0
+    },
+    {
+      frage: "Ein Verbraucher mit Isolationsfehler fließt ein Fehlerstrom über PE zum RCD. Was passiert?",
+      antworten: [
+        "Nichts – PE leitet keinen Strom.",
+        "Der RCD löst aus und unterbricht den Stromkreis.",
+        "Der Schutzleiter verbrennt durch Überstrom.",
+        "Der N-Leiter übernimmt den Fehlerstrom."
+      ],
+      korrekt: 1
+    },
+    {
+      frage: "Was bewirkt Selektivität zwischen zwei RCDs?",
+      antworten: [
+        "Beide lösen gleichzeitig aus.",
+        "Nur der nachgeschaltete RCD löst aus – die selektive Auslösung verhindert unnötige Unterbrechungen.",
+        "Der vorgeschaltete RCD verhindert Auslösung.",
+        "RCDs sind nicht selektiv."
+      ],
+      korrekt: 1
+    }
+  ];
+
+  let aktuellesSzenario = 0;
+
+  function zeigeSzenario() {
+    const sz = szenarien[aktuellesSzenario];
+    document.getElementById("szenarioText").textContent = sz.frage;
+
+    const container = document.getElementById("antwortenContainer");
+    container.innerHTML = "";
+
+    sz.antworten.forEach((antwort, index) => {
+      const button = document.createElement("button");
+      button.textContent = antwort;
+      button.style.display = "block";
+      button.style.margin = "5px 0";
+      button.onclick = () => überprüfeAntwort(index);
+      container.appendChild(button);
+    });
+  }
+
+  function überprüfeAntwort(antwortIndex) {
+    const korrekt = szenarien[aktuellesSzenario].korrekt;
+    const feedback = document.getElementById("quizFeedback");
+
+    if (antwortIndex === korrekt) {
+      feedback.textContent = "✅ Richtig!";
+      feedback.style.color = "limegreen";
+    } else {
+      feedback.textContent = "❌ Falsch! Richtige Antwort: " +
+        szenarien[aktuellesSzenario].antworten[korrekt];
+      feedback.style.color = "crimson";
+    }
+  }
+
+  function naechstesSzenario() {
+    aktuellesSzenario = (aktuellesSzenario + 1) % szenarien.length;
+    document.getElementById("quizFeedback").textContent = "";
+    zeigeSzenario();
+  }
+
+  // Start
+  zeigeSzenario();
+</script>
+
 </section>
 <section id="spannungsfall-leitfaehigkeit">
   <h2>Spannungsfall mit elektrischer Leitfähigkeit \( \lambda \)</h2>
