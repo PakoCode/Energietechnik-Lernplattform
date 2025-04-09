@@ -281,29 +281,18 @@ main {
     <title>Zeigerdiagramm</title>
 </head>
 <body>
-<script> 
- // function checkOrientationAlert() {
-    // Wenn die Fensterbreite kleiner ist als die Höhe → Portraitmodus
- //   if(window.innerWidth < window.innerHeight) {
- //     alert("Für die beste Darstellung empfehlen wir, Ihr Gerät in den Querformat zu drehen.");
-    }
-  }
-
-  // Beim Laden, bei Resize und bei Orientierungswechsel prüfen
-  window.addEventListener("load", checkOrientationAlert);
-  window.addEventListener("resize", checkOrientationAlert);
-  window.addEventListener("orientationchange", checkOrientationAlert);
-</script>
   <div class="side-navigation">
     <!-- Navigationseinträge -->
     <button onclick="document.getElementById('section1').scrollIntoView()">Übergabepunkten</button>
     <button onclick="document.getElementById('unterverteilung').scrollIntoView()">Unterverteilung</button>
+	<button onclick="document.getElementById('Messungen').scrollIntoView()">Messungen</button>
     <button onclick="document.getElementById('section2').scrollIntoView()">Netzformen</button>
     <button onclick="document.getElementById('section3').scrollIntoView()">Energieversorgung</button>
     <button onclick="document.getElementById('section4').scrollIntoView()">Dreiphasenwechselspannung</button>
     <button onclick="document.getElementById('section5').scrollIntoView()">RCD</button>
     <button onclick="document.getElementById('ueberstrom-schutzeinrichtungen').scrollIntoView()">Überstrom-Schutzeinrichtungen</button>
     <button onclick="document.getElementById('spannungsfall-leitfaehigkeit').scrollIntoView()">Spannungsfall</button>
+	<button onclick="document.getElementById('potentialausgleichsleitung').scrollIntoView()">Potentialausgleichsleitung</button>
   </div>
 <main>
     <header>
@@ -558,7 +547,144 @@ function prüfeAntwort() {
   <p>
     Eine fachgerechte Planung und Installation der Unterverteilung ist essenziell, um den sicheren und zuverlässigen Betrieb der elektrischen Anlage zu gewährleisten. Regelmäßige Wartungen und Prüfungen unterstützen zusätzlich den langfristigen Betrieb.
   </p>
-<section id="messungenUnterverteilung">
+ <section id="Messungen">
+  <h2>Messungen in der Veranstaltungstechnik</h2>
+  <p>
+    Vor der Inbetriebnahme einer elektrischen Anlage – insbesondere bei Veranstaltungen – sind bestimmte Messungen erforderlich, um die elektrische Sicherheit zu gewährleisten. Diese Messungen erfolgen typischerweise an Übergabepunkten, mobilen Unterverteilungen und Endverbrauchern.
+  </p>
+
+  <h3>Warum wird gemessen?</h3>
+  <ul>
+    <li>Zur Einhaltung der Vorgaben nach DIN VDE 0100-600 (Erstprüfung elektrischer Anlagen)</li>
+    <li>Zum Nachweis der Schutzmaßnahmen (z. B. Schutz durch automatische Abschaltung)</li>
+    <li>Zur Vermeidung von elektrischen Gefährdungen durch Fehlfunktionen oder Installationsfehler</li>
+  </ul>
+
+  <h3>Typische Messungen</h3>
+  <table style="width:100%; border-collapse: collapse;" border="1">
+    <thead style="background:#1e1e1e;">
+      <tr>
+        <th>Messgröße</th>
+        <th>Messpunkt(e)</th>
+        <th>Einheit</th>
+        <th>Typischer Sollwert</th>
+        <th>Zweck</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Schleifenimpedanz (Z<sub>s</sub>)</td>
+        <td>Abgangsklemme, Steckdosen</td>
+        <td>Ω (Ohm)</td>
+        <td>abhängig von Leitungslänge & Absicherung</td>
+        <td>Überprüfung der Abschaltbedingungen bei Kurzschluss</td>
+      </tr>
+      <tr>
+        <td>Isolationswiderstand</td>
+        <td>Zwischen aktiven Leitern und Schutzleiter</td>
+        <td>MΩ (Megaohm)</td>
+        <td>> 1 MΩ (bei 230/400 V)</td>
+        <td>Erkennung von Isolationsfehlern</td>
+      </tr>
+      <tr>
+        <td>Spannung (U)</td>
+        <td>zwischen L-N, L-PE, N-PE</td>
+        <td>V (Volt)</td>
+        <td>230 V / 400 V</td>
+        <td>Verifikation der Netzspannung und Polarität</td>
+      </tr>
+      <tr>
+        <td>RCD-Auslöseprüfung</td>
+        <td>Am RCD / nachgeschaltete Steckdosen</td>
+        <td>ms (Millisekunden)</td>
+        <td>&lt; 300 ms bei I<sub>Δn</sub></td>
+        <td>Schutz bei indirektem Berühren</td>
+      </tr>
+      <tr>
+        <td>Durchgängigkeit Schutzleiter</td>
+        <td>Zwischen PE-Klemme und Metallgehäuse</td>
+        <td>Ω (Ohm)</td>
+        <td>&lt; 1 Ω</td>
+        <td>Verbindung zur Schutzmaßnahme</td>
+      </tr>
+      <tr>
+        <td>Kurzschlussstrom I<sub>k</sub></td>
+        <td>Übergabepunkt, Unterverteilung</td>
+        <td>A (Ampere)</td>
+        <td>z. B. > 1000 A</td>
+        <td>Abschaltbedingungen bei Kurzschluss</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>Wie wird gemessen?</h3>
+  <ul>
+    <li>Mit einem normgerechten Prüfgerät nach DIN EN 61557</li>
+    <li>Messungen stets bei abgeschalteter Anlage (außer Spannungs- und RCD-Prüfung)</li>
+    <li>Ergebnisse dokumentieren und protokollieren</li>
+  </ul>
+
+  <h3>Typische Messgeräte</h3>
+  <ul>
+    <li>Installationstester (z. B. Benning IT 120, Gossen Metrawatt, Fluke 1664)</li>
+    <li>Multimeter für Spannungs- und Strommessung</li>
+    <li>RCD-Prüfgeräte</li>
+  </ul>
+
+  <h3>Hinweis zur Reihenfolge der Messungen</h3>
+  <ol>
+    <li>Durchgängigkeit des Schutzleiters</li>
+    <li>Isolationswiderstand</li>
+    <li>Schleifenimpedanz und Kurzschlussstrom</li>
+    <li>Spannung</li>
+    <li>RCD-Auslöseprüfung</li>
+  </ol>
+
+  <p>
+    <strong>Wichtig:</strong> Alle Messungen dürfen nur durch elektrotechnisch unterwiesene Personen oder Fachkräfte durchgeführt werden. Sie sind verpflichtend vor jeder Veranstaltung, bei Umbauten oder neuen Stromkreisen.
+  </p>
+
+  <h2> Leistungen und Bemessung am Übergabepunkt</h2>
+    <h3>Leistungsbedarf:</h3>
+    <p>Der Übergabepunkt muss für die maximale Summenleistung aller Verbraucher ausgelegt sein. Hierbei gilt:</p>
+    <h4>Einphasige Last:</h4>
+    <ul>
+        <li>P = U × I × cos φ</li>
+        <li>P: Wirkleistung (W)</li>
+        <li>U: Spannung (V, typischerweise 230 V)</li>
+        <li>I: Strom (A)</li>
+        <li>cos φ: Leistungsfaktor (z. B. 0,8 bis 1,0 für viele Geräte)</li>
+    </ul>
+    <h4>Dreiphasige Last:</h4>
+    <ul>
+        <li>P = √3 × U × I × cos φ</li>
+        <li>U: Spannung zwischen den Außenleitern (400 V in Europa).</li>
+    </ul>
+    <h3>Dimensionierung der Absicherung:</h3>
+    <p>Absicherung wird entsprechend der Anschlussleistung dimensioniert. Beispiel:</p>
+    <ul>
+        <li>Bei einer Gesamtleistung von 22 kW (Drehstrom, cos φ = 0,95) ergibt sich:</li>
+        <li>I = P / (√3 × U × cos φ) = 22000 / (√3 × 400 × 0,95) ≈ 33,5 A</li>
+        <li>Es wäre ein Leitungsschutzschalter mit Nennstrom 35 A oder 40 A zu wählen.</li>
+    </ul>
+    <h3>Spannungsfallberechnung:</h3>
+    <p>Ein zu hoher Spannungsfall zwischen Übergabepunkt und Verbrauchern kann zu Funktionseinschränkungen führen. Nach DIN VDE 0100-520 gilt:</p>
+    <ul>
+        <li>ΔU ≤ 3 % für Hauptstromkreise (0,03 × 400 V = 12 V)</li>
+    </ul>
+    <p><strong>Berechnung des Spannungsfalls:</strong></p>
+    <ul>
+        <li>ΔU = (2 × L × I × ρ) / A</li>
+        <li>L: Leitungslänge in m.</li>
+        <li>I: Strom in A.</li>
+        <li>ρ: spezifischer Widerstand (Cu: ca. 0,0178 Ω·mm²/m).</li>
+        <li>A: Querschnitt in mm².</li>
+    </ul>
+    <p>Beispiel: Bei 30 m Länge, 32 A Strom und 16 mm² Kupferleitung:</p>
+    <ul>
+        <li>ΔU = (2 × 30 × 32 × 0,0178) / 16 ≈ 2,1 V</li>
+    </ul>
+    <p>Der Spannungsfall ist in diesem Beispiel vernachlässigbar klein und erfüllt die Norm.</p>
   <h2>Messungen der Unterverteilung</h2>
   <p>
     Um den sicheren Betrieb der elektrischen Anlage zu gewährleisten, sind in der Unterverteilung regelmäßige Messungen und Prüfungen unerlässlich. Folgende Messverfahren kommen dabei typischerweise zum Einsatz:
@@ -692,49 +818,92 @@ function prüfeAntwort() {
         </tbody>
     </table>
 </section>
+<section id="stern-dreieckschaltung">
+  <h2>Stern- und Dreieckschaltung</h2>
 
-    <h2>3. Leistungen und Bemessung am Übergabepunkt</h2>
-    <h3>Leistungsbedarf:</h3>
-    <p>Der Übergabepunkt muss für die maximale Summenleistung aller Verbraucher ausgelegt sein. Hierbei gilt:</p>
-    <h4>Einphasige Last:</h4>
-    <ul>
-        <li>P = U × I × cos φ</li>
-        <li>P: Wirkleistung (W)</li>
-        <li>U: Spannung (V, typischerweise 230 V)</li>
-        <li>I: Strom (A)</li>
-        <li>cos φ: Leistungsfaktor (z. B. 0,8 bis 1,0 für viele Geräte)</li>
-    </ul>
-    <h4>Dreiphasige Last:</h4>
-    <ul>
-        <li>P = √3 × U × I × cos φ</li>
-        <li>U: Spannung zwischen den Außenleitern (400 V in Europa).</li>
-    </ul>
-    <h3>Dimensionierung der Absicherung:</h3>
-    <p>Absicherung wird entsprechend der Anschlussleistung dimensioniert. Beispiel:</p>
-    <ul>
-        <li>Bei einer Gesamtleistung von 22 kW (Drehstrom, cos φ = 0,95) ergibt sich:</li>
-        <li>I = P / (√3 × U × cos φ) = 22000 / (√3 × 400 × 0,95) ≈ 33,5 A</li>
-        <li>Es wäre ein Leitungsschutzschalter mit Nennstrom 35 A oder 40 A zu wählen.</li>
-    </ul>
-    <h3>Spannungsfallberechnung:</h3>
-    <p>Ein zu hoher Spannungsfall zwischen Übergabepunkt und Verbrauchern kann zu Funktionseinschränkungen führen. Nach DIN VDE 0100-520 gilt:</p>
-    <ul>
-        <li>ΔU ≤ 3 % für Hauptstromkreise (0,03 × 400 V = 12 V)</li>
-    </ul>
-    <p><strong>Berechnung des Spannungsfalls:</strong></p>
-    <ul>
-        <li>ΔU = (2 × L × I × ρ) / A</li>
-        <li>L: Leitungslänge in m.</li>
-        <li>I: Strom in A.</li>
-        <li>ρ: spezifischer Widerstand (Cu: ca. 0,0178 Ω·mm²/m).</li>
-        <li>A: Querschnitt in mm².</li>
-    </ul>
-    <p>Beispiel: Bei 30 m Länge, 32 A Strom und 16 mm² Kupferleitung:</p>
-    <ul>
-        <li>ΔU = (2 × 30 × 32 × 0,0178) / 16 ≈ 2,1 V</li>
-    </ul>
-    <p>Der Spannungsfall ist in diesem Beispiel vernachlässigbar klein und erfüllt die Norm.</p>
-    </section>
+  <p>
+    In der Elektrotechnik werden bei Drehstromsystemen häufig zwei unterschiedliche Schaltungsarten verwendet: die <strong>Sternschaltung (Y)</strong> und die <strong>Dreieckschaltung (Δ)</strong>.
+    Beide haben unterschiedliche Eigenschaften und werden je nach Anwendung eingesetzt – insbesondere bei Motoren oder Transformatoren.
+  </p>
+
+  <h3>1. Sternschaltung (Y-Schaltung)</h3>
+  <p>
+    Bei der Sternschaltung sind alle drei Phasen an einem gemeinsamen Mittelpunkt (Sternpunkt) verbunden. Der Sternpunkt kann geerdet oder mit einem Neutralleiter verbunden sein.
+  </p>
+  <ul>
+    <li>Die Spannung zwischen Phase und Neutralleiter (Strangspannung) ist kleiner als die Spannung zwischen den Außenleitern (Leiterspannung).</li>
+    <li>Formel: <strong>U<sub>Strang</sub> = U<sub>Leiter</sub> / √3</strong></li>
+    <li>Typisch für lange Leitungswege oder Verbraucher mit niedriger Leistungsaufnahme.</li>
+  </ul>
+
+  <h4>Vorteile:</h4>
+  <ul>
+    <li>Neutralleiteranschluss möglich</li>
+    <li>Geringere Spannung an den einzelnen Verbrauchern</li>
+    <li>Geringere Einschaltströme bei Motoren (Sanftanlauf)</li>
+  </ul>
+
+  <h3>2. Dreieckschaltung (Δ-Schaltung)</h3>
+  <p>
+    Bei der Dreieckschaltung sind die Phasenenden der Wicklungen kreisförmig miteinander verbunden. Es entsteht kein Neutralleiter.
+  </p>
+  <ul>
+    <li>Die Strangspannung entspricht der Leiterspannung.</li>
+    <li>Formel: <strong>U<sub>Strang</sub> = U<sub>Leiter</sub></strong></li>
+    <li>Höhere Stromaufnahme, wird bei hoher Leistung und im Betriebszustand verwendet.</li>
+  </ul>
+
+  <h4>Vorteile:</h4>
+  <ul>
+    <li>Mehr Leistung bei gleichem Motor</li>
+    <li>Bessere Ausnutzung der Wicklungen</li>
+    <li>Kein Neutralleiter nötig</li>
+  </ul>
+
+  <h3>3. Vergleichstabelle</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Eigenschaft</th>
+        <th>Sternschaltung (Y)</th>
+        <th>Dreieckschaltung (Δ)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Spannung am Strang</td>
+        <td>U<sub>Strang</sub> = U<sub>Leiter</sub> / √3</td>
+        <td>U<sub>Strang</sub> = U<sub>Leiter</sub></td>
+      </tr>
+      <tr>
+        <td>Strom am Strang</td>
+        <td>I<sub>Strang</sub> = I<sub>Leiter</sub></td>
+        <td>I<sub>Strang</sub> = I<sub>Leiter</sub> / √3</td>
+      </tr>
+      <tr>
+        <td>Leistungsaufnahme</td>
+        <td>Geringer</td>
+        <td>Höher</td>
+      </tr>
+      <tr>
+        <td>Neutralleiter</td>
+        <td>Möglich</td>
+        <td>Nicht vorhanden</td>
+      </tr>
+      <tr>
+        <td>Typische Anwendung</td>
+        <td>Motorstart, Leuchten</td>
+        <td>Betrieb von Motoren, Heizungen</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>4. Stern-Dreieck-Anlauf bei Motoren</h3>
+  <p>
+    Drehstrommotoren werden häufig beim Einschalten zunächst in Sternschaltung betrieben, um den Anlaufstrom zu begrenzen.
+    Nach dem Hochlauf (ca. 5–10 Sekunden) wird automatisch in Dreieckschaltung umgeschaltet, um die volle Leistung bereitzustellen.
+  </p>
+</section>
     <section id="section3">
         <h2>1. Grundlagen der Energieversorgung</h2>
     <h3>a) Energiequellen</h3>
@@ -2056,6 +2225,67 @@ document.addEventListener('DOMContentLoaded', berechneNennstrom);
       \( I_{\text{max}} = 16 \, \text{mm}^2 \times 10 \, \text{A/mm}^2 = 160 \, \text{A} \)
     </p>
   </section>
+  <section id="potentialausgleichsleitung">
+  <h2>Potentialausgleichsleitung (PA-Leitung)</h2>
+
+  <p>
+    Die Potentialausgleichsleitung (kurz: PA-Leitung) ist ein wesentlicher Bestandteil des Schutzes gegen elektrischen Schlag. Sie verbindet leitfähige Teile (z. B. Gehäuse, Rohre, Träger) miteinander und mit der Hauptpotentialausgleichsschiene, um Potentialunterschiede auszugleichen.
+  </p>
+
+  <h3>Funktion:</h3>
+  <ul>
+    <li>Vermeidung gefährlicher Berührungsspannungen</li>
+    <li>Sicherstellung eines gemeinsamen Potentials aller leitfähigen Teile</li>
+    <li>Schaffung eines sicheren Erdpotentials im Fehlerfall</li>
+  </ul>
+
+  <h3>Querschnitt und Material:</h3>
+  <ul>
+    <li><strong>Material:</strong> Meist Kupfer</li>
+    <li><strong>Verbindung zur Haupterdungsschiene (PAS):</strong> mindestens 6 mm² Cu (geschützt), 10 mm² Cu (ungeschützt)</li>
+    <li><strong>PA-Leitung zu leitfähigen Teilen (z. B. Wasserrohre):</strong> mindestens 2.5 mm² (geschützt), 4 mm² (ungeschützt)</li>
+    <li><strong>Bei Verbindung zu anderen Erdungsanlagen (z. B. Fundamenterder):</strong> mind. 16 mm² Cu empfohlen</li>
+  </ul>
+
+  <h3>Verlegehinweise:</h3>
+  <ul>
+    <li>So kurz wie möglich</li>
+    <li>Gut sichtbar oder dokumentiert verlegt</li>
+    <li>Dauerhaft elektrisch leitend (korrosionsfreie Verbindungen)</li>
+    <li>Gekennzeichnet mit grün-gelber Isolierung oder Beschriftung</li>
+  </ul>
+
+  <h3>Berechnung des Leiterwiderstands</h3>
+  <p>
+    Der elektrische Widerstand \( R \) einer PA-Leitung lässt sich mit folgender Formel berechnen:
+  </p>
+  <p style="text-align: center; font-size: 1.2em;">
+    \( R = \frac{\rho \cdot l}{A} \)
+  </p>
+  <ul>
+    <li>\( R \) = elektrischer Widerstand in Ohm (Ω)</li>
+    <li>\( \rho \) = spezifischer Widerstand des Materials (Kupfer: 0,0178 Ω·mm²/m)</li>
+    <li>\( l \) = Leitungslänge in Metern</li>
+    <li>\( A \) = Leiterquerschnitt in mm²</li>
+  </ul>
+  <p><strong>Beispiel:</strong> Eine 10 m lange PA-Leitung aus Kupfer mit 10 mm²:</p>
+  <p style="text-align: center; font-size: 1.2em;">
+    \( R = \frac{0{,}0178 \cdot 10}{10} = 0{,}0178 \, \Omega \)
+  </p>
+
+  <h3>Zusätzliche Hinweise:</h3>
+  <ul>
+    <li>Alle metallischen Teile, die durch fremde leitfähige Verbindungen gefährdet sein könnten, müssen in den Potentialausgleich einbezogen werden.</li>
+    <li>PA-Leitungen dürfen nicht als Schutzleiter (PE) verwendet werden – ihre Funktion ist ergänzend.</li>
+    <li>Verbindungen müssen dauerhaft elektrisch leitend und mechanisch fest sein (z. B. Schraubklemmen, Schweißverbindungen).</li>
+  </ul>
+
+  <h3>Fazit:</h3>
+  <p>
+    Der Potentialausgleich ist ein zentraler Bestandteil des Schutzkonzepts in elektrischen Anlagen. Richtig dimensionierte und verlegte PA-Leitungen helfen, gefährliche Spannungsunterschiede zu vermeiden und tragen maßgeblich zur Sicherheit bei Übergabepunkten und Verteilungen bei.
+  </p>
+</section>
+
 </main>
 </body>
 </html>
