@@ -346,7 +346,7 @@ main {
             <li><strong>Sicherheit:</strong> Schutz der Energieinfrastruktur vor technischen Ausfällen, Naturkatastrophen oder gezielten Angriffen.</li>
         </ul>
     </section>
-	<section id="messungen-uebergabepunkte">
+	<section id="messungen-uebergabepunkt">
   <h2>Messungen bei Übergabepunkten</h2>
   <p>
     Übergabepunkte sind kritische Schnittstellen in elektrischen Anlagen, an denen Messungen durchgeführt werden, um den sicheren und zuverlässigen Betrieb zu gewährleisten. In diesem Abschnitt findest du eine Übersicht der wichtigsten Messverfahren und Normen.
@@ -1330,17 +1330,18 @@ function berechneNFach() {
     return;
   }
 
-  const nFach = (IB / IN).toFixed(2);
+  const nFach = IB / IN;
+  const nFachRounded = nFach.toFixed(2);
 
   let hinweis;
   if(nFach < 1) {
     hinweis = "Unter dem Nennstrom – LS-Schalter löst nicht aus.";
   } else {
-    hinweis = `Nutze den ${nFach}-fachen Wert in der Kennlinie der Charakteristik ${typ}, um die Auslösezeit abzulesen.`;
+    hinweis = `Nutze den ${nFachRounded}-fachen Wert in der Kennlinie der Charakteristik ${typ}, um die Auslösezeit abzulesen.`;
   }
 
   document.getElementById('ergebnisNFach').innerHTML = `
-    Der Betriebsstrom ist das <strong>${nFach}</strong>-fache des Nennstroms (I<sub>N</sub>).<br><br>
+    Der Betriebsstrom ist das <strong>${nFachRounded}</strong>-fache des Nennstroms (I<sub>N</sub>).<br><br>
     ${hinweis}
   `;
 }
